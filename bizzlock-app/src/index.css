@@ -1,0 +1,81 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fff;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+html, body, #app, #app > div {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h5 {
+  color: #28cc9e;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #000;
+}
+
+
+
+/* HOME */
+.home-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  /* cambiar por mediaquery */
+}
+
+.jobseeker-container, .employee-container {
+  margin: 120px auto;
+  padding: 20px;
+  width: 400px;
+}
+
+.jobseeker-container img, .employee-container img {
+  width: 100px;
+  margin: auto;
+  display: block;
+}
+
+.jobseeker-container p, .employee-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.jobseeker-container button, .employee-container button {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+  margin-top: 10px;
+  margin-left: 130px;
+  width: 140px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 3px -1px rgba(0, 0, 0, 0.5);
+}
+
+.jobseeker-container button:hover, .employee-container button:hover {
+  color: #00FE7F;
+  border-bottom: 1px solid #00FE7F;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+/*# sourceMappingURL=index.css.map */

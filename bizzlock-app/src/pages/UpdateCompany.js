@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const CreateOrUpdateCompany = () => {
+const UpdateCompany = () => {
     return (
         <>
             <form>
@@ -12,4 +12,4 @@ const CreateOrUpdateCompany = () => {
     )
 }
 
-export default CreateOrUpdateCompany;
+export default UpdateCompany;

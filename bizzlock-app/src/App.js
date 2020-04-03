@@ -8,6 +8,8 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import CompanyListing from './pages/CompanyListing';
 import SignUp from './pages/SignUp';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import NotFound from './components/NotFound';
 import './index.scss';
 
 
@@ -26,8 +28,11 @@ function App() {
           <Route path="/sign-up">
             <SignUp />
           </Route> 
+          <Route path="/privacy-policy">
+            <PrivacyPolicy />
+          </Route>
           <Route path="/">
-            <div>404</div>
+            <NotFound />
           </Route>
         </Switch>
       </Router>

@@ -13,8 +13,8 @@ const JobSeekerComponent = () => {
         <>
         <div className='jobseeker-container'>
             <img src='https://image.flaticon.com/icons/svg/2680/2680961.svg' alt='job-seeker-icon'/>
-            <p>Or are you just looking?</p>
-                <button onClick={handleClick}>Search</button>
+            <p>I want to read about other people&apos;s experiences</p>
+                <button onClick={handleClick}>SEARCH</button>
         </div>    
         </>
     )

@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  background: #f3f3f3;
+  background-color: #f3f3f3;
   margin: 0;
   font-family: 'Lato', sans-serif;
 }
@@ -19,15 +19,17 @@ a {
   text-decoration: none;
 }
 
+p {
+  font-size: 12px;
+}
 
 /* HEADER */
 
 header {
   width: 100%;
   height: fit-content;
-  background-color: #1b262c;
+  background-color: #000;
 }
-
 .logo {
   width: 130px;
   margin: 10px;
@@ -41,17 +43,21 @@ header {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap; /* cambiar por mediaquery */
+  background-image: url('https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-position-y: top;
+  background-repeat: no-repeat;
 }
 
-
 .jobseeker-container, .employee-container {
-  margin: 120px auto;
+  margin: 80px auto;
   padding: 30px;
   width: 360px;
   height: 400px;
   border-radius: 1px;
+  background-color: rgba(255,255,255, 0.9);
   border: 1px solid lightgray;
-  background-color: #fff;  
+  border-radius: 2px;
   img {
     width: 100px;
     margin: 20px auto;
@@ -62,24 +68,82 @@ header {
     font-size: 16px;
     text-align: center;
   }
+  .jobseeker-select {
+    position: relative;    
+    margin: auto;
+    select {
+      background-color: #fff;
+      width: 250px;
+      padding: 5px;
+      margin-left: 50px;
+      margin-top: 20px;
+    option {
+      padding: 8px;
+      border: 1px solid #3282b8;
+      cursor: pointer;
+      user-select: none;
+    }
+    }
+  }
   button {
-    background-color: #fff;
+    background-color: #bee5ff;
     color: #000;
     border-radius: 1px;
     border: 1px solid #3282b8;
     padding: 8px;
-    margin-top: 20px;
-    margin-left: 90px;
-    width: 50%;
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 70%;
     font-size: 16px;
     cursor: pointer;
     &:hover {
       -webkit-box-shadow:inset 0px 0px 0px 1px #3282b8;
       -moz-box-shadow:inset 0px 0px 0px 1px #3282b8;
       box-shadow:inset 0px 0px 0px 1px #51a2d8;
-      background-color: #bee5ff;
       transition-duration: 0.6s;
     }
+  }
+}
+
+.how-it-works-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  .how-it-works-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    img {
+      max-width: 80px;
+    }
+  }
+  .how-it-works-text {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    p {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  color: #fff;
+  p {
+    color: lightgray;
+    font-size: 14px;
   }
 }
 
@@ -89,7 +153,7 @@ header {
 .form-box {
   border-radius: 5px;
   padding: 20px;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 form {
@@ -101,47 +165,61 @@ form {
   -moz-box-shadow: -1px 4px 6px -2px rgba(181,181,181,0.79);
   box-shadow: -1px 4px 6px -2px rgba(181,181,181,0.79);
   border-radius: 5px;
-  width: 300px;
+  width: 350px;
+  height: 300px;
   padding: 20px;
   margin: auto;
   h3 {
-    margin: 20px 15px;
+    margin: 20px 15px 10px 20px;
     font-weight: 400;
   }
-  label {
-    padding: 15px;
-    margin: 10px;
+  p {
+    font-size: 13px;
   }
   input {
-    margin: 10px;
+    margin: 20px;
     padding: 8px;
     border-radius: 1px;
     display: inline-block;
-    border: 1px solid #fff;
+    border: 1px solid lightgray;
     outline: none;
     &:focus {
-      border-bottom: 1px solid #bbe1fa;
+      border: 1px solid #bbe1fa;
     }
   }
-  ::placeholder {
-    color: gainsboro;
+  a {
+    margin: 5px;
+    text-decoration: underline;
+  }
+  #notonthelist {
+    font-size: 13px;
+    margin-top: -5px;
+    margin-left: 20px;
   }
   .privacy-check {
-    margin-top: 20px;
+    margin-left: 5px;
     #check-privacy {
       cursor: pointer;
     }
     p {
-      font-size: 11px;
+      margin-left: -10px;
       display: inline-block;
+    }
+    #privacy-link {
+      margin: 0px;
     }
   }
   #signup-btn {
     background-color: #3282b8;
     margin-top: 10px;
+    border-radius: 3px;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    &:hover {
+      background-color: #51a2d8;
+      transition-duration: 0.3s;
+    }
   }
 }
 
@@ -166,96 +244,213 @@ form {
 
 #listing-search {
   margin-top: 70px;
-  margin-left: 350px;
-  width: 560px;
-  height: 35px;
-  padding: 10px;
+  margin-left: 450px;
+  width: 660px;
+  height: 40px;
+  padding: 10px 15px;
   border-radius: 2px;
   border: 1px solid #fff;
-  border-bottom: 1px solid lightgray;
+  border: 1px solid lightgray;
   outline: none;
+  font-size: 14px;
 }
 
 .listing-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
-  padding: 10px;
+  margin-top: 40px;
 }
 
 .listing-results {
+  border: 1px solid lightgray;
   padding: 30px;
-  width: 500px;
-  margin-left: 230px;
+  width: 600px;
+  margin-left: 260px;
+  margin-right: -100px;
   font-size: 14px;
   background-color: #fff;
   border-radius: 2px;
   ul {
     margin: 0;
-    border: 1px solid lightgray;
   }
   li {
     margin-left: -30px;
     list-style: none;
     padding: 10px;
   }
-  h4 {
-    text-transform: uppercase;
-  }
 }
 
-.company-result {
-  display: flex;
-  margin: 10px 15px 20px 10px;
-  padding: 10px;
+.company-result-single {
+  margin-top: 20px;
+  padding: 20px;
+  display: flex; 
   border: 1px solid lightgray;
-  .company-photo img {
-    width: 70px;
-    height: auto;
-  }
-  .company-info {
-    width: 350px;
-    padding-left: 20px;
-    h4 {
-      margin: 0;
-    }
-    p {
-      font-size: 12px;
-    }
+}
+
+/* change to background img of div */
+.company-photo img {
+  width: 80px;
+  height: auto;
+}
+
+.company-info {
+  width: 350px;
+  padding-left: 20px;
+  p {
+    font-size: 14px;
   }
 }
 
 .listing-sidebar {
-  /* make it sticky */
+  position: sticky; /* not working... */
+  top: 0;
   background-color: #fff;
-  padding: 15px 30px;
-  width: 200px;
-  margin-top: 30px;
+  padding: 10px 40px;
+  width: 270px;
+  height: fit-content;
   border: 1px solid lightgray;
   border-radius: 2px;
   h4 {
-    margin: 15px 10px 10px 10px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 15px;
   }
   p {
-    margin: 10px;
-    font-size: 14px;
+    font-size: 16px;
   }
   select {
-    margin: 10px 5px;
     padding: 3px;
+    width: 100%;
     background-color: #fff;
-  }
-  li {
     font-size: 14px;
-    padding: 5px;
   }
   button {
     background-color: #000;
     color: #fff;
-    padding: 5px;
-    margin: 15px;
+    padding: 7px;
+    margin: 15px 40px;
     border: 1px solid black;
-    font-size: 16px;
-    width: 170px;
+    font-size: 18px;
+    width: 180px;
+    cursor: pointer;
   }
 }
+
+/* CREATE COMPANY */
+
+.create-form {
+  width: 700px;
+  height: 100%;
+  margin: 20px auto;
+  padding: 30px;
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 18px;
+  }
+  .create-company-form {
+    margin-top: 50px;
+    width: 600px;
+    height: 100%;
+    padding: 30px 50px;
+    label {
+      font-size: 16px;
+      margin: 10px 0px 10px 0px;
+    }
+    input {
+      margin-bottom: 10px;
+      margin-left: -5px;
+      width: 300px;
+      border: 1px solid lightgray;
+    }
+    select {
+      background-color: #fff;
+      padding: 5px;
+      width: 320px;
+      outline: none;
+    }
+    .perks-flex {
+      display: flex;
+      justify-content: space-around;
+      p {
+        display: inline-block;
+        margin-left: -10px;
+      }
+      .perks-check {
+        width: 20px;
+        display: inline-block;
+        user-select: none;
+      }
+    }
+    textarea {
+      padding: 10px;
+      height: 100px;
+    }
+    .submit-btns {
+      margin-top: 20px;
+    }
+    #create-btn {
+      flex: 1;
+      width: 50%;
+      display: inline-block;
+      background-color: rgb(173, 235, 173);
+      border: 2px solid rgb(173, 235, 173);
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button {
+      flex: 1;
+      background-color: rgb(255, 121, 121);
+      border: 1px solid white;
+      padding: 10px;
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+}
+
+/* COMPANY DETAIL */ 
+
+.company-details-container {
+  position: absolute;
+  width: 600px;
+  height: 500px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 10px;
+  margin: auto;
+}
+
+/* COMMENTS */ 
+
+.comment-container {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #bbe1fa;  
+  width: 600px;
+  height: 120px;
+  margin: 20px;
+  .comment-avatar {
+    background-image: url('https://image.flaticon.com/icons/svg/456/456212.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+    flex: 1;
+  }
+  .comment-content {
+    padding: 20px;
+    font-size: 16px;
+    flex: 3;
+  }
+}
+

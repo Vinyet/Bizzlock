@@ -1,5 +1,5 @@
-import React from 'react';
 
+// OPTIONS FOR SELECTS IN JOBSEEKER
 
 export const LocationOptions = [
     { value: 'Barcelona', label: 'Barcelona'},
@@ -17,6 +17,8 @@ export const IndustryOptions = [
     { value: 'Retail', label: 'Retail' }
 ]
 
+// THEMES
+
 export default function customTheme(theme) {
     return {
         ...theme,
@@ -28,4 +30,5 @@ export default function customTheme(theme) {
     }
 }
 
+// VALIDATION AND FORM ERROR HANDLERS
 

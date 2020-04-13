@@ -1,16 +1,13 @@
 import React from 'react';
-import NotFoundImg from "./notfoundimg.png";
 
 
 const NotFound = () => {
     return (
         <>
-        <div style={{backgroundColor: 'white'}}>
-            <img src={NotFoundImg} alt='page-not-found'></img>
-        </div>
+        <h3>Not found</h3>
+        <a href="/">Go back to homepage</a>
         </>
     )
 }
-
 
 export default NotFound;

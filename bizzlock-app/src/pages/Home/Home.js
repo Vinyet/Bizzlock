@@ -1,7 +1,6 @@
 import React from 'react';
-import Employee from '../components/Employee';
-import JobSeeker from '../components/JobSeeker';
-import '../index.css';
+import Employee from '../../components/Employee';
+import JobSeeker from '../../components/JobSeeker';
 
 
 const Home = () => {

@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
-import { getCompanies } from '../services/data';
-import Select from 'react-select';
-//import makeAnimated from 'react-select/animated';
+import { getCompanies } from '../../services/data';
 
-// https://react-select.com/async
-// separate into 3 components?
-// upload files to firebase
 
 const CompanyListing = () => {
     const [ companies, setCompanies ] = useState([]);
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
     const extraFadeIn = useSpring({opacity: 2, from: {opacity: 0}});
-    let { query } = useParams();
+    //let { query } = useParams();
 
     useEffect(() => {
         const fetchCompanies = async () => {
@@ -34,35 +29,20 @@ const CompanyListing = () => {
     }
 
     return (
+
     <>
-    <Select isSearcheable onChange={handleSearch} id="listing-search" placeholder="Search company..." />
+
+    <div className="listing-banner">
+        <h2>Company listing</h2>
+        <select>
+            <option>Best rated</option>
+            <option>Closer to me</option>
+        </select>
+    </div>
 
     <animated.div style={fadeIn} className="listing-container">
 
-        <div className="listing-results">
-            <ul>
-                <li>
-                    <div className="company-results">
-                    {companies.map((company) => {
-                    return (
-                        // top rated by default
-                        <animated.div style={extraFadeIn} className="company-result-single" key={company.id}>
-                            <div key={company.id} className="company-photo">
-                                <img src="https://logosmarcas.com/wp-content/uploads/2018/05/Apple-logo.png" alt="company-logo"/>
-                            </div>
-                            <div className="company-info">
-                                <a href="/company-details"><h2>{company.name}</h2></a>
-                                <p>Founded in {company.founded}</p>
-                            </div>    
-                        </animated.div>    
-                    )
-                })}
-                    </div>
-                </li>    
-            </ul>
-        </div>
-
-        <aside className="listing-sidebar">
+    <aside className="listing-sidebar">
             <h4>Salary</h4>
             <p>💵 💵 💵 💵 💵</p>
             <h4>Rating</h4>
@@ -97,11 +77,40 @@ const CompanyListing = () => {
                 <p><input type="checkbox"></input>Health insurance</p>
                 <p><input type="checkbox"></input>Free parking</p>
                 <p><input type="checkbox"></input>Plus por objetivos</p>
-            <input type="text" placeholder="Keywords"></input>
             <button>FILTRAR</button>
-         </aside>
-        </animated.div>
+        </aside>
+
+        <div className="empty-space" style={{flex: 1, backgroundColor: 'white'}}></div>
+
+        <div className="listing-results">
+        <input type="search" autoFocus id="listing-search" onChange={handleSearch} placeholder="SEARCH COMPANY..." />
+
+            <ul>
+                <li>
+                    <div className="company-results">
+                    {companies.map((company) => {
+                    return (
+                        // top rated by default
+                        <animated.div style={extraFadeIn} className="company-result-single" key={company.id}>
+                            <div key={company.id} className="company-photo">
+                                <img src="https://logosmarcas.com/wp-content/uploads/2018/05/Apple-logo.png" alt="company-logo"/>
+                            </div>
+                            <div className="company-info">
+                                <a href="/company-details"><h2>{company.name}</h2></a>
+                                <p>Founded in {company.founded}</p>
+                            </div>    
+                        </animated.div>    
+                    )
+                })}
+                    </div>
+                </li>    
+            </ul>
+        </div>
+
+    </animated.div>
+
     </>
+
     )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import CommentsCreate from '../../components/Comments';
 
 
 // ref + react-hook-form, clase del 03/04
@@ -72,7 +73,7 @@ const CreateCompany = () => {
                         </div>
                     </div>
                     <label>Comment  (optional)</label>
-                    <textarea placeholder="Leave a comment explaining your experiences with this company" onChange={(e) => setComment(e.target.value)}></textarea>
+                    <CommentsCreate onChange={(e) => setComment(e.target.value)} />
                     <div className="submit-btns">
                         <input type="submit" id="create-btn" value="CREATE" onClick={handleSubmit}></input>
                         <button onClick={handleCancel}>CANCEL</button>

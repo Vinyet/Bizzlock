@@ -1,0 +1,30 @@
+/* MAIN/BASE THINGS */
+
+body {
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  a {
+    color: #3282b8;
+    text-decoration: none;
+  }   
+  li {
+    list-style-type: none;
+    font-size: 16px;
+    padding: 10px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+  
+html, body, #app, #app > div {
+  height: 100%
+}
+  
+.main {
+  position: relative;
+  min-height: 100vh;
+}
+

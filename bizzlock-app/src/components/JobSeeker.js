@@ -14,8 +14,6 @@ const JobSeeker = () => {
         history.push(`/company-listing/?location=${location}?industry=${industry}`);
     }
 
-    console.log("location is " + location + "and industry is " + industry)
-
     return (
         <div className='jobseeker-container'>
             <img src='https://image.flaticon.com/icons/svg/2680/2680961.svg' alt='job-seeker-icon'/>

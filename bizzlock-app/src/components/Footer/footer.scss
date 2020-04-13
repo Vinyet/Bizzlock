@@ -1,0 +1,13 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    p {
+      color: lightgray;
+      font-size: 14px;
+    }
+}

@@ -1,0 +1,121 @@
+/* MAIN CONTAINER */
+
+.listing-banner {
+  background-color: #000;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  #listing-search { /* move to right and move logo to left when scrolling */
+    width: 100%;
+    height: 55px;
+    padding: 20px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    outline: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: rgb(29, 28, 28);
+    padding-left: 445px;
+    flex: 3;
+  }  
+  select {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #000;
+    border: 1px solid #000;
+    color: $primary-color;
+    border-bottom: 1px solid $primary-color;
+    option { /* not working */ 
+      border: 1px solid #000;
+      border-left: 1px solid $primary-color;
+      padding: 20px;
+      color: $primary-color;
+      background-color: #000;
+    }
+  }
+}
+
+.listing-container {
+  display: flex;
+  justify-content: space-around;
+}
+  
+/* SIDEBAR */ 
+.listing-sidebar {
+  position: sticky;
+  top: 0;
+  flex: 1;
+  padding: 10px 40px;
+  width: 200px;
+  height: fit-content;
+  border-radius: 2px;
+  h4 {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 16px;
+  }
+  select {
+    padding: 8px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  button { /* make it sticky */
+    background-color: #000;
+    color: #fff;
+    padding: 7px;
+    margin: 15px 0px;
+    border: 1px solid black;
+    font-size: 18px;
+    width: 180px;
+    cursor: pointer;
+  }
+}
+
+/* RESULTS BOX */
+.listing-results {
+  border: 1px solid lightgray;
+  flex: 4;
+  font-size: 16px;
+  border-radius: 2px;
+  li {
+    list-style: none;
+    padding: 10px;
+  }
+  .company-result-single {
+    display: flex; 
+  }
+  .company-result-single {
+    margin-top: 20px;
+    width: 90%;
+    padding: 20px;
+    display: flex; 
+    border: 1px solid #fff;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid lightgray;
+    }
+    .company-photo img { /* change to background img of div */
+      width: 75px;
+      margin-top: 20px;
+      height: auto;
+    }
+    .company-info {
+      padding-left: 30px;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}

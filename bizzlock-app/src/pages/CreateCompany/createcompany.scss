@@ -1,0 +1,87 @@
+.create-form {
+  width: 700px;
+  height: fit-content;
+  margin: 20px auto;
+  padding: 30px;
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 18px;
+  }
+
+  .create-company-form {
+    margin-top: 50px;
+    width: 600px;
+    height: 100%;
+    padding: 30px 50px;
+    label {
+      font-size: 16px;
+      margin: 10px 0px 25px 0px;
+    }
+    input {
+      margin-bottom: 15px;
+      margin-left: -5px;
+      width: 400px;
+      height: 30px;
+      border: 1px solid lightgray;
+      display: block;
+    }
+    select {
+      background-color: #fff;
+      padding: 5px;
+      display: block;
+      width: 320px;
+      outline: none;
+    }
+
+    .perks-flex {
+      display: flex;
+      justify-content: space-around;
+      p {
+        display: inline-block;
+        margin-left: -10px;
+      }
+
+      .perks-check {
+        width: 20px;
+        display: inline-block;
+        user-select: none;
+      }
+    }
+
+    textarea {
+      padding: 10px;
+      height: 100px;
+    }
+
+    .submit-btns {
+      margin-top: 20px;
+    }
+    
+    #create-btn {
+      flex: 1;
+      width: 50%;
+      display: inline-block;
+      background-color: rgb(173, 235, 173);
+      border: 2px solid rgb(173, 235, 173);
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button {
+      flex: 1;
+      background-color: rgb(255, 121, 121);
+      border: 1px solid white;
+      padding: 10px;
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+}

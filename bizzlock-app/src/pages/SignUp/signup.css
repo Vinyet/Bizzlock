@@ -1,0 +1,91 @@
+.form-box {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.form-box form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  -webkit-box-shadow: -1px 4px 6px -2px rgba(181, 181, 181, 0.79);
+  box-shadow: -1px 4px 6px -2px rgba(181, 181, 181, 0.79);
+  border-radius: 5px;
+  width: 400px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  margin: auto;
+}
+
+.form-box form h3 {
+  margin: 20px 15px 30px 20px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.form-box form label {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.form-box form input {
+  margin-left: 45px;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+  outline: none;
+  width: 320px;
+}
+
+.form-box form input:focus {
+  border: 1px solid #bbe1fa;
+}
+
+.form-box form #notonthelist {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
+.form-box form .privacy-check {
+  margin-left: 40px;
+}
+
+.form-box form .privacy-check #check-privacy {
+  width: 20px;
+  margin: 30px auto;
+  cursor: pointer;
+}
+
+.form-box form #signup-btn {
+  background-color: #3282b8;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-box form #signup-btn:hover {
+  background-color: #51a2d8;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.form-box form .company-results li {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.form-box form .company-results li:hover {
+  background-color: #bbe1fa;
+}
+/*# sourceMappingURL=signup.css.map */

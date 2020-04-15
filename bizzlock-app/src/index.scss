@@ -2,54 +2,14 @@
 @import './variables.scss';
 @import './common.scss';
 
-/* COMPONENTS */
-@import './components/Header/header.scss';
-@import './components/Footer/footer.scss';
-
 /* PAGES */ 
 @import './pages/Home/home.scss';
 @import './pages/SignUp/signup.scss';
 @import './pages/CompanyListing/companylisting.scss';
 @import './pages/CreateCompany/createcompany.scss';
+@import './pages/CompanyDetails/companydetails.scss';
 
-
-
-/* COMPANY DETAIL */ 
-
-.company-details-container {
-  position: absolute;
-  width: 600px;
-  height: 500px;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-  padding: 10px;
-  margin: auto;
-}
-
-/* COMMENTS */ 
-
-.comment-container {
-  position: relative;
-  display: flex;
-  border-bottom: 1px solid #bbe1fa;  
-  width: 600px;
-  height: 120px;
-  margin: 20px;
-  .comment-avatar {
-    background-image: url('https://image.flaticon.com/icons/svg/456/456212.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 20px;
-    width: 60px;
-    height: 60px;
-    flex: 1;
-  }
-  .comment-content {
-    padding: 20px;
-    font-size: 16px;
-    flex: 3;
-  }
-  textarea {
-    width: 400px;
-  }
-}
+/* COMPONENTS */
+@import './components/Header/header.scss';
+@import './components/Footer/footer.scss';
+@import './components/Comments/comments.scss';

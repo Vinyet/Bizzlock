@@ -8,7 +8,7 @@ import React from 'react';
 const Header = () => {
     return (
         <header> 
-            <a href="/"><img src="/logov.png" alt="bizzlock-logo" className="logo"/></a>
+            <a href="/"><img src="/test.png" alt="bizzlock-logo" className="logo"/></a>
         </header>
     )
 }

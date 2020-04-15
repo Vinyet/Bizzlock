@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import CompanyListing from './pages/CompanyListing/CompanyListing';
 import CreateCompany from './pages/CreateCompany/CreateCompany';
-import CompanyDetails from './pages/CompanyDetails';
+import CompanyDetails from './pages/CompanyDetails/CompanyDetails';
 import SignUp from './pages/SignUp/SignUp';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFound from './components/NotFound';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import CommentsCreate from '../../components/Comments';
+import CommentsCreate from '../../components/Comments/Comments';
 
 
 // ref + react-hook-form, clase del 03/04
@@ -13,10 +13,10 @@ const CreateCompany = () => {
     const history = useHistory();
     // const errors 
 
-    useEffect(() => {
+   /* useEffect(() => {
         setCompanyName(companyName);
         setCompanyLocation(companyLocation);
-    }, []);
+    }, []);*/
 
     function handleCancel(e) {
         e.preventDefault();

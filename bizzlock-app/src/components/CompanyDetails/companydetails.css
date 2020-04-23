@@ -1,0 +1,98 @@
+.company-details-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.company-details-container h2 {
+  text-align: center;
+}
+
+.company-details-container .company-header {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.company-details-container .company-header img {
+  width: 120px;
+  height: 120px;
+  border: 1px dotted lightgray;
+  border: 1px solid gray;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.company-details-container .company-header .company-description {
+  width: 600px;
+  height: 100%;
+  border: 1px solid gray;
+  padding: 20px;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+
+.company-details-container .company-feedback {
+  margin-top: 20px auto;
+}
+
+.company-details-container .company-feedback .information-selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid gray;
+  padding: 20px;
+}
+
+.company-details-container .company-feedback label {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.company-details-container .company-feedback select {
+  padding: 5px;
+  width: 250px;
+  background-color: #fff;
+}
+
+.company-details-container .company-feedback .perks-flex {
+  -webkit-box-shadow: -5px 5px 5px -6px #292929;
+  box-shadow: -5px 5px 5px -6px #292929;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.company-details-container .company-feedback .perks-flex p {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+.company-details-container .company-feedback .perks-flex .perks-check {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: #fcfff4;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
+          box-shadow: inset 0px 1px 1px white, 0px 1px px;
+  opacity: 0.5;
+}
+
+.company-details-container .company-feedback .perks-flex .perks-check:checked {
+  opacity: 1;
+}
+/*# sourceMappingURL=companydetails.css.map */

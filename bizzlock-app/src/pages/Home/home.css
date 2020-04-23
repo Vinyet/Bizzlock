@@ -11,7 +11,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   /* JOBSEEKER AND EMPLOYEE COMPONENTS */
-  /* HOW IT WORKS */
 }
 
 .home-container button {
@@ -39,10 +38,9 @@
   padding: 30px;
   width: 360px;
   height: 400px;
-  border-radius: 1px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   color: #000;
-  border-radius: 2px;
+  border: 1px solid lightgray;
 }
 
 .home-container .jobseeker-container img, .home-container .employee-container img {
@@ -80,7 +78,8 @@
           user-select: none;
 }
 
-.home-container .how-it-works-section {
+/* HOW IT WORKS */
+.how-it-works-section {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,11 +90,10 @@
           flex-direction: column;
   width: 60%;
   margin: auto;
-  background-color: #000;
   padding-bottom: 60px;
 }
 
-.home-container .how-it-works-section .how-it-works-icons {
+.how-it-works-section .how-it-works-icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -104,11 +102,11 @@
   margin-top: 20px;
 }
 
-.home-container .how-it-works-section .how-it-works-icons img {
+.how-it-works-section .how-it-works-icons img {
   max-width: 50px;
 }
 
-.home-container .how-it-works-section .how-it-works-text {
+.how-it-works-section .how-it-works-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,7 +115,7 @@
   margin-top: 20px;
 }
 
-.home-container .how-it-works-section .how-it-works-text p {
+.how-it-works-section .how-it-works-text p {
   font-size: 16px;
   padding: 10px;
 }

@@ -1,35 +1,31 @@
-.comment-container {
-  position: relative;
+.comments-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #bbe1fa;
-  width: 600px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 900px;
   height: 120px;
-  margin: 20px;
+  margin: 50px;
 }
 
-.comment-container .comment-avatar {
-  background-image: url("https://image.flaticon.com/icons/svg/456/456212.svg");
+.comments-container .comment-avatar {
+  background-image: url("https://image.flaticon.com/icons/svg/1077/1077012.svg");
   background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 20px;
-  width: 60px;
-  height: 60px;
+  background-position: top;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.comment-container .comment-content {
-  padding: 20px;
+.comments-container textarea {
+  padding: 25px;
   font-size: 16px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-}
-
-.comment-container textarea {
-  width: 400px;
+  -webkit-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  font-family: 'Lato', sans-serif;
+  outline: none;
 }
 /*# sourceMappingURL=comments.css.map */

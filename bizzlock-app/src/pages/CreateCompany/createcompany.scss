@@ -1,87 +1,118 @@
-.create-form {
-  width: 700px;
-  height: fit-content;
-  margin: 20px auto;
-  padding: 30px;
+body {
+  background-image: url('https://images.unsplash.com/photo-1435575653489-b0873ec954e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.create-company-form {
+  width: 70%;
+  padding: 30px; 
+  margin: auto;
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: inset 0px 1px 1px white, 0px 1px px;
   h2 {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
   }
-  p {
-    font-size: 16px;
+  .text-above {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 50px;
     line-height: 18px;
   }
-
-  .create-company-form {
-    margin-top: 50px;
-    width: 600px;
-    height: 100%;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .create-form {
     padding: 30px 50px;
-    label {
-      font-size: 16px;
-      margin: 10px 0px 25px 0px;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    width: 70%;
+    margin: auto;
+    hr {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(131, 131, 131, 0), rgba(141, 141, 141, 0.75), rgba(110, 110, 110, 0));
     }
-    input {
-      margin-bottom: 15px;
-      margin-left: -5px;
-      width: 400px;
-      height: 30px;
-      border: 1px solid lightgray;
-      display: block;
+    .information-selects {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 40px;
+      margin: 10px;
     }
     select {
       background-color: #fff;
-      padding: 5px;
+      padding: 8px 12px;
       display: block;
-      width: 320px;
+      width: 300px;
       outline: none;
+      border: 1px solid $primary-color;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      overflow: auto;
+      font-size: 16px;
+      line-height: 1.3;
+      cursor: pointer;
+      appearance: none;
+      background-image: url('https://image.flaticon.com/icons/svg/625/625946.svg');
+      background-repeat: no-repeat;
+      background-position-y: center;
+      background-position-x: 270px;
+      background-size: 13px;
     }
-
+    .company-feedback{
+      padding: 10px 40px;
+    }
     .perks-flex {
       display: flex;
       justify-content: space-around;
       p {
         display: inline-block;
-        margin-left: -10px;
+        margin-left: 5px;
       }
-
       .perks-check {
+        cursor: pointer;
         width: 20px;
-        display: inline-block;
-        user-select: none;
+        height: 20px;
+        background-color: #fff;
+        box-shadow: inset 0px 1px 1px white, 0px 1px px;
+        opacity: 0.5;
+        &:checked {
+          opacity: 1;
+        }
       }
     }
-
-    textarea {
-      padding: 10px;
-      height: 100px;
-    }
-
-    .submit-btns {
-      margin-top: 20px;
-    }
-    
-    #create-btn {
-      flex: 1;
-      width: 50%;
-      display: inline-block;
-      background-color: rgb(173, 235, 173);
-      border: 2px solid rgb(173, 235, 173);
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button {
-      flex: 1;
-      background-color: rgb(255, 121, 121);
-      border: 1px solid white;
-      padding: 10px;
-      width: 50%;
-      font-size: 16px;
-      display: inline-block;
-      cursor: pointer;
+    .comments-area {
+      margin-top: 50px;
+      border: 1px solid lightgray;
+      background-color: #f3f3f3;
+      padding: 30px;
+      textarea {
+        border: 1px solid lightgray;
+      }
+      .submit-btns {
+        display: flex;
+        width: 300px;
+        margin-left: 320px;
+        justify-content: flex-end;
+        #create-btn {
+          width: 30px;
+          margin-left: 30px;
+          background-color: #fff;
+          border: 1px solid rgb(173, 235, 173);
+          font-size: 16px;
+          cursor: pointer;
+        }
+        button {
+          width: 30px;
+          margin-left: 30px;
+          background-color: #fff;
+          border: 1px solid rgb(255, 121, 121);
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

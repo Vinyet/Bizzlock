@@ -1,5 +1,6 @@
 /* COMMON */
 /* COLORS */
+/* BOX SHADOW */
 /* MAIN/BASE THINGS */
 body {
   -webkit-box-sizing: border-box;
@@ -39,6 +40,7 @@ html, body, #app, #app > div {
   min-height: 100vh;
 }
 
+/* ???? */
 @-webkit-keyframes bouncing-loader {
   to {
     opacity: 0.1;
@@ -46,7 +48,6 @@ html, body, #app, #app > div {
             transform: translate3d(0, -1rem, 0);
   }
 }
-
 @keyframes bouncing-loader {
   to {
     opacity: 0.1;
@@ -98,7 +99,6 @@ html, body, #app, #app > div {
   background-size: cover;
   background-repeat: no-repeat;
   /* JOBSEEKER AND EMPLOYEE COMPONENTS */
-  /* HOW IT WORKS */
 }
 
 .home-container button {
@@ -126,10 +126,9 @@ html, body, #app, #app > div {
   padding: 30px;
   width: 360px;
   height: 400px;
-  border-radius: 1px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   color: #000;
-  border-radius: 2px;
+  border: 1px solid lightgray;
 }
 
 .home-container .jobseeker-container img, .home-container .employee-container img {
@@ -167,7 +166,8 @@ html, body, #app, #app > div {
           user-select: none;
 }
 
-.home-container .how-it-works-section {
+/* HOW IT WORKS */
+.how-it-works-section {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,11 +178,10 @@ html, body, #app, #app > div {
           flex-direction: column;
   width: 60%;
   margin: auto;
-  background-color: #000;
   padding-bottom: 60px;
 }
 
-.home-container .how-it-works-section .how-it-works-icons {
+.how-it-works-section .how-it-works-icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -191,11 +190,11 @@ html, body, #app, #app > div {
   margin-top: 20px;
 }
 
-.home-container .how-it-works-section .how-it-works-icons img {
+.how-it-works-section .how-it-works-icons img {
   max-width: 50px;
 }
 
-.home-container .how-it-works-section .how-it-works-text {
+.how-it-works-section .how-it-works-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,7 +203,7 @@ html, body, #app, #app > div {
   margin-top: 20px;
 }
 
-.home-container .how-it-works-section .how-it-works-text p {
+.how-it-works-section .how-it-works-text p {
   font-size: 16px;
   padding: 10px;
 }
@@ -262,7 +261,8 @@ html, body, #app, #app > div {
 
 .form-box form #notonthelist {
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 100px;
+  margin-bottom: -20px;
   margin-left: 45px;
 }
 
@@ -281,6 +281,7 @@ html, body, #app, #app > div {
   border-radius: 3px;
   color: #fff;
   font-size: 16px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -292,8 +293,11 @@ html, body, #app, #app > div {
 
 .form-box form .company-results li {
   font-size: 16px;
+  margin-top: 10px;
+  margin-left: 45px;
+  padding: 10px;
   cursor: pointer;
-  padding: 5px;
+  width: 300px;
 }
 
 .form-box form .company-results li:hover {
@@ -461,58 +465,89 @@ html, body, #app, #app > div {
   font-size: 16px;
 }
 
-.create-form {
-  width: 700px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: 20px auto;
+.create-company-form {
+  width: 90%;
+  height: 90%;
   padding: 30px;
+  margin: auto;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
+          box-shadow: inset 0px 1px 1px white, 0px 1px px;
 }
 
-.create-form h2 {
+.create-company-form h2 {
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.create-form p {
-  font-size: 16px;
+.create-company-form .text-above {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 50px;
   line-height: 18px;
 }
 
-.create-form .create-company-form {
-  margin-top: 50px;
-  width: 600px;
-  height: 100%;
+.create-company-form img {
+  width: 100px;
+  height: 100px;
+}
+
+.create-company-form .create-form {
   padding: 30px 50px;
-}
-
-.create-form .create-company-form label {
-  font-size: 16px;
-  margin: 10px 0px 25px 0px;
-}
-
-.create-form .create-company-form input {
-  margin-bottom: 15px;
-  margin-left: -5px;
-  width: 400px;
-  height: 30px;
   border: 1px solid lightgray;
-  display: block;
+  width: 70%;
+  margin: auto;
 }
 
-.create-form .create-company-form select {
+.create-company-form .create-form hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(131, 131, 131, 0)), color-stop(rgba(141, 141, 141, 0.75)), to(rgba(110, 110, 110, 0)));
+  background-image: linear-gradient(to right, rgba(131, 131, 131, 0), rgba(141, 141, 141, 0.75), rgba(110, 110, 110, 0));
+}
+
+.create-company-form .create-form .information-selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 40px;
+  margin: 10px;
+}
+
+.create-company-form .create-form select {
   background-color: #fff;
-  padding: 5px;
+  padding: 8px;
   display: block;
   width: 320px;
   outline: none;
+  border: 1px solid #bbe1fa;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  overflow: auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  /*background-image: url(...);  */
 }
 
-.create-form .create-company-form .perks-flex {
+.create-company-form .create-form select option {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.create-company-form .create-form select option:hover {
+  background-color: #bbe1fa;
+}
+
+.create-company-form .create-form .company-feedback {
+  padding: 10px 40px;
+}
+
+.create-company-form .create-form .perks-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -520,62 +555,63 @@ html, body, #app, #app > div {
       justify-content: space-around;
 }
 
-.create-form .create-company-form .perks-flex p {
+.create-company-form .create-form .perks-flex p {
   display: inline-block;
-  margin-left: -10px;
+  margin-left: 5px;
 }
 
-.create-form .create-company-form .perks-flex .perks-check {
+.create-company-form .create-form .perks-flex .perks-check {
+  cursor: pointer;
   width: 20px;
-  display: inline-block;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  height: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
+          box-shadow: inset 0px 1px 1px white, 0px 1px px;
+  opacity: 0.5;
 }
 
-.create-form .create-company-form textarea {
-  padding: 10px;
-  height: 100px;
+.create-company-form .create-form .perks-flex .perks-check:checked {
+  opacity: 1;
 }
 
-.create-form .create-company-form .submit-btns {
-  margin-top: 20px;
-}
-
-.create-form .create-company-form #create-btn {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  width: 50%;
-  display: inline-block;
-  background-color: #adebad;
-  border: 2px solid #adebad;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.create-form .create-company-form button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background-color: #ff7979;
-  border: 1px solid white;
-  padding: 10px;
-  width: 50%;
-  font-size: 16px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.company-details-container {
-  position: absolute;
-  width: 600px;
-  height: 500px;
+.create-company-form .create-form .comments-area {
+  margin-top: 50px;
   border: 1px solid lightgray;
-  border-radius: 2px;
-  padding: 10px;
-  margin: auto;
+  background-color: #f3f3f3;
+  padding: 30px;
+}
+
+.create-company-form .create-form .comments-area textarea {
+  border: 1px solid lightgray;
+}
+
+.create-company-form .create-form .comments-area .submit-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  margin-left: 320px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.create-company-form .create-form .comments-area .submit-btns #create-btn {
+  width: 30px;
+  margin-left: 30px;
+  background-color: #fff;
+  border: 1px solid #adebad;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.create-company-form .create-form .comments-area .submit-btns button {
+  width: 30px;
+  margin-left: 30px;
+  background-color: #fff;
+  border: 1px solid #ff7979;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* COMPONENTS */
@@ -583,12 +619,27 @@ header {
   width: 100%;
   top: 0;
   background-color: #000;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .logo {
-  padding-left: 30px;
+  padding: 5px 50px;
   display: inline-block;
   width: 150px;
+}
+
+header .right-navigation {
+  margin-left: auto;
+  padding: 15px 50px;
+}
+
+header .right-navigation a {
+  padding: 10px;
+  margin-right: 30px;
+  font-size: 16px;
 }
 
 footer {
@@ -610,38 +661,129 @@ footer p {
   font-size: 14px;
 }
 
-.comment-container {
-  position: relative;
+.comments-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #bbe1fa;
-  width: 600px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 900px;
   height: 120px;
-  margin: 20px;
+  margin: 50px;
 }
 
-.comment-container .comment-avatar {
-  background-image: url("https://image.flaticon.com/icons/svg/456/456212.svg");
+.comments-container .comment-avatar {
+  background-image: url("https://image.flaticon.com/icons/svg/1077/1077012.svg");
   background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 20px;
-  width: 60px;
-  height: 60px;
+  background-position: top;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.comment-container .comment-content {
-  padding: 20px;
+.comments-container textarea {
+  padding: 25px;
   font-size: 16px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  -webkit-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  font-family: 'Lato', sans-serif;
 }
 
-.comment-container textarea {
-  width: 400px;
+.company-details-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.company-details-container h2 {
+  text-align: center;
+}
+
+.company-details-container .company-header {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  -webkit-box-shadow: -5px 5px 5px -6px #292929;
+          box-shadow: -5px 5px 5px -6px #292929;
+}
+
+.company-details-container .company-header img {
+  width: 120px;
+  height: 120px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.company-details-container .company-header .company-description {
+  width: 600px;
+  height: 100%;
+  padding: 20px;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+
+.company-details-container .company-feedback {
+  margin-top: 20px auto;
+  -webkit-box-shadow: -5px 5px 5px -6px #292929;
+          box-shadow: -5px 5px 5px -6px #292929;
+}
+
+.company-details-container .company-feedback .information-selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 20px;
+}
+
+.company-details-container .company-feedback label {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.company-details-container .company-feedback select {
+  padding: 5px;
+  width: 250px;
+  background-color: #fff;
+  outline: none;
+}
+
+.company-details-container .company-feedback .perks-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.company-details-container .company-feedback .perks-flex p {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+.company-details-container .company-feedback .perks-flex .perks-check {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: #fcfff4;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
+          box-shadow: inset 0px 1px 1px white, 0px 1px px;
+  opacity: 0.5;
+}
+
+.company-details-container .company-feedback .perks-flex .perks-check:checked {
+  opacity: 1;
 }
 /*# sourceMappingURL=index.css.map */

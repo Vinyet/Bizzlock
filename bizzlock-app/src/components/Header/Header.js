@@ -9,6 +9,10 @@ const Header = () => {
     return (
         <header> 
             <a href="/"><img src="/test.png" alt="bizzlock-logo" className="logo"/></a>
+            <div className="right-navigation">
+                <a href="/about">ABOUT</a>
+                <a href="/contact">CONTACT</a>
+            </div>
         </header>
     )
 }

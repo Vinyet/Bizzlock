@@ -37,6 +37,7 @@ html, body, #app, #app > div {
   min-height: 100vh;
 }
 
+/* ???? */
 @-webkit-keyframes bouncing-loader {
   to {
     opacity: 0.1;
@@ -44,7 +45,6 @@ html, body, #app, #app > div {
             transform: translate3d(0, -1rem, 0);
   }
 }
-
 @keyframes bouncing-loader {
   to {
     opacity: 0.1;

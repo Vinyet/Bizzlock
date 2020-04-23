@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 //import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { getCompanies } from '../../services/data';
-
+import companyDetails from '../../components/CompanyDetails/CompanyDetails';
+// ONCLICK, LOAD COMPANYDETAILS COMPONENT ON THE RIGHT SIDE!
 
 const CompanyListing = () => {
     const [ companies, setCompanies ] = useState([]);
+    const history = useHistory();
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
     const extraFadeIn = useSpring({opacity: 2, from: {opacity: 0}});
     //let { query } = useParams();
@@ -46,7 +49,7 @@ const CompanyListing = () => {
         <animated.div style={fadeIn} className="listing-container">
 
         <aside className="listing-sidebar">
-                <h4 style={{display: 'inline-block', marginRight: '15px'}}>Salary  </h4>
+                <h4 style={{display: 'inline-block', marginRight: '15px'}}>Salary</h4>
                 
                 <h4>Rating</h4>
                 <img src="https://img.icons8.com/office/16/000000/filled-star.png" alt="one star"/> 
@@ -93,13 +96,12 @@ const CompanyListing = () => {
                         <div className="company-results">
                         {companies.map((company) => { 
                         return (
-                            // top rated by default
-                            <animated.div style={extraFadeIn} className="company-result-single" key={company.id}>
+                            <animated.div style={extraFadeIn} className="company-result-single" key={company.id} onClick={() => <companyDetails company={company.id}/>}>
                                 <div key={company.id} className="company-photo">
                                     <img src="https://logosmarcas.com/wp-content/uploads/2018/05/Apple-logo.png" alt="company-logo"/>
                                 </div>
                                 <div className="company-info">
-                                    <a href="/company-details"><h2>{company.name}</h2></a>
+                                    <h2>{company.name}</h2>
                                     <p>Founded in {company.founded}</p>
                                 </div>    
                             </animated.div>    
@@ -109,13 +111,10 @@ const CompanyListing = () => {
                     </li>    
                 </ul>
             </div>
-
         </animated.div>
-
         </>
     )
 }
-
 
 
 export default CompanyListing;

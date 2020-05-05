@@ -1,9 +1,18 @@
-import firebaseApp from '../config';
+import firebase from 'firebase/app';
 
 
-// gets companies from firebase store
+// CHECK CONNECTION
+let DB_CONNECTION = null;
+function _getDBConnection() {
+    if (!DB_CONNECTION) {
+        DB_CONNECTION = firebase.firestore();
+    }
+    return DB_CONNECTION;
+}
+
+// GETS companies from firebase store
 async function getCompanies() {
-    const db = firebaseApp.firestore();
+    const db = _getDBConnection();
     const querySnapshot = await db.collection('companies').get();
 
     const companies = [];
@@ -16,4 +25,10 @@ async function getCompanies() {
     return companies;
 }
 
-export { getCompanies }
+// POSTS companies to firebase store
+async function postCompany(newCompany) {
+    const db = _getDBConnection();
+    const result = await db.collection('companies').add(newCompany);
+}
+
+export { getCompanies, postCompany }

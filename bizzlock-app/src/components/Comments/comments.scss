@@ -1,20 +1,11 @@
-.comments-container {
-  display: flex;
-  justify-content: space-between;
-  width: 900px;
-  height: 120px;
-  margin: 50px;
-  .comment-avatar {
-    background-image: url('https://image.flaticon.com/icons/svg/1077/1077012.svg');
-    background-repeat: no-repeat;
-    background-position: top;
-    flex: 1;
-  }
-  textarea {
-    padding: 25px;
-    font-size: 16px;
-    flex: 5;
-    font-family: 'Lato', sans-serif;
-    outline: none;
-  }
+.comment-textarea {
+  padding: 15px 20px;
+  font-size: 14px;
+  width: 800px;
+  height: 100px;
+  font-family: 'Lato', sans-serif;
+  border: 1px solid lightgray;
+  outline: none;
+  resize: none;
+  overflow: auto;
 }

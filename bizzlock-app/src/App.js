@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import CompanyListing from './pages/CompanyListing/CompanyListing';
 import CreateCompany from './pages/CreateCompany/CreateCompany';
-import UpdateCompany from './pages/UpdateCompany';
+import UpdateCompany from './pages/UpdateCompany/UpdateCompany';
 import CompanyDetails from './components/CompanyDetails/CompanyDetails';
 import SignUp from './pages/SignUp/SignUp';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -26,36 +26,16 @@ function App() {
         <Header/>
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>  
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/company-listing">
-              <CompanyListing />
-            </Route> 
-            <Route path="/company-details">
-              <CompanyDetails />
-            </Route>
-            <Route path="/sign-up">
-              <SignUp />
-            </Route> 
-            <Route path="/privacy-policy">
-              <PrivacyPolicy />
-            </Route>
-            <Route path="/create-company">
-              <CreateCompany />
-            </Route>
-            <Route path="/update-company/:company">
-              <UpdateCompany  />
-            </Route>
-            <Route path="/">
-              <NotFound />
-            </Route>
+            <Route exact path="/" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/contact" component={Contact}/>
+            <Route path="/sign-up" component={SignUp}/>
+            <Route path="/company-listing/:location/:industry" component={CompanyListing}/>
+            <Route path="/company-details/" component={CompanyDetails}/>
+            <Route path="/create-company/" component={CreateCompany}/>
+            <Route path="/update-company/" component={UpdateCompany}/>
+            <Route path="/privacy-policy" component={PrivacyPolicy}/>
+            <Route path="/" component={NotFound}/>
           </Switch>
         </Router>
         <Footer/>

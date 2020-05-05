@@ -1,8 +1,7 @@
 /* MAIN/BASE THINGS */
-
 body {
   box-sizing: border-box;
-  background-color: #f3f3f3;
+  background-color: #f5f5f5;;
   margin: 0;
   font-family: 'Lato', sans-serif;
   a {
@@ -31,7 +30,6 @@ html, body, #app, #app > div {
 }
 
 
-/* ???? */
 .loader {
   @keyframes bouncing-loader {
     to {

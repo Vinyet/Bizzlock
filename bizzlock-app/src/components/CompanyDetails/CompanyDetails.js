@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { useParams } from 'react-router-dom';
-import CommentsSection from '../Comments/Comments';
+import { useLocation } from 'react-router-dom';
+import CommentsSection from '../Comments/CommentsSection';
 
 
-const CompanyDetails = () => {
+const CompanyDetails = props => {
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
-    const companyName = useParams();
-    const [ location, setLocation] = useState(); // hq? 
+    const location = useLocation();
+    const [ companyLocation, setCompanyLocation] = useState(); 
     const [ industry, setIndustry] = useState(); // 
-    const [ rating, setRating ] = useState(); // number? num estrellas, y de cuántas valoraciones totales
-    const [ salary, setSalary ] = useState(); // number?
+    //const [ rating, setRating ] = useState(); // num estrellas, y de cuántas valoraciones totales
+    //const [ salary, setSalary ] = useState(); // number?
 
     return (
         <animated.div style={fadeIn} className="company-details-container">
@@ -34,7 +34,7 @@ const CompanyDetails = () => {
                         </div>
                         <div className="location-select">    
                             <label htmlFor='location-select'>Select the location <small>(or the headquarters you work at):</small> </label>
-                            <select onChange={(e) => setLocation(e.target.value) } placeholder="Select location">
+                            <select onChange={(e) => setCompanyLocation(e.target.value) } placeholder="Select location">
                                 <option>New York</option>
                                 <option>Barcelona</option>
                                 <option>Madrid</option>

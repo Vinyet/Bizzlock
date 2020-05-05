@@ -2,67 +2,74 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap; /* cambiar por mediaquery */
-  //background-image: url('https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80');
-  background-image: url('https://images.unsplash.com/photo-1435575653489-b0873ec954e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-image: url('https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80');
   background-size: cover;
   background-repeat: no-repeat;
-  button {
-    background-color: #bee5ff;
-    color: #000;
-    border-radius: 1px;
-    border: 1px solid #3282b8;
-    padding: 8px;
-    margin-top: 40px;
-    margin-left: 50px;
-    width: 70%;
-    font-size: 16px;
-    cursor: pointer;
-    &:hover {
-      -webkit-box-shadow:inset 0px 0px 0px 1px #3282b8;
-      -moz-box-shadow:inset 0px 0px 0px 1px #3282b8;
-      box-shadow:inset 0px 0px 0px 1px #51a2d8;
-      transition-duration: 0.6s;
-      }
-    }
 
   /* JOBSEEKER AND EMPLOYEE COMPONENTS */ 
   .jobseeker-container, .employee-container {
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
     margin: 80px auto;
     padding: 30px;
     width: 360px;
     height: 400px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(15,76,117,0.9);
     color: #000;
-    border: 1px solid lightgray;
+    border: none;
     img {
-      width: 100px;
+      width: 80px;
       margin: 20px auto;
       display: block;
     }
     p {
-      margin-top: 35px;
+      margin-top: 40px;
       font-size: 16px;
       text-align: center;
+      color: #fff;
+    }
+    button {
+      background-color: #fff;
+      color: #000;
+      border-radius: 1px;
+      border-radius: 2px;
+      border: none;
+      padding: 8px;
+      margin-left: 50px;
+      width: 70%;
+      font-size: 16px;
+      opacity: 0.8;
+      cursor: pointer;
+      &:hover {
+        -webkit-box-shadow:inset 0px 0px 0px 1px #3282b8;
+        -moz-box-shadow:inset 0px 0px 0px 1px #3282b8;
+        box-shadow:inset 0px 0px 0px 1px #51a2d8;
+        opacity: 1;
+        transition-duration: 0.4s;
+        }
+      }
+    #employee-btn {
+      margin-top: 130px;
     }
     .jobseeker-select {
       position: relative;    
       margin: auto;
       select {
         background-color: #fff;
+        border-radius: 5px; 
+        border: none;
         width: 250px;
-        padding: 5px;
+        padding: 10px;
+        -webkit-appearance: button;
+        cursor: pointer;
+        outline: none;
         margin-left: 50px;
         margin-top: 20px;
-      option {
-        padding: 8px;
-        border: 1px solid #3282b8;
-        cursor: pointer;
-        user-select: none;
-        }
       }
     }
   }
 } 
+
+
 
 /* HOW IT WORKS */
 .how-it-works-section {

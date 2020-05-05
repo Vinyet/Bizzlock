@@ -1,43 +1,36 @@
 .create-company-form {
-  width: 90%;
-  height: 90%;
-  padding: 30px;
-  margin: auto;
-  background-color: #fff;
-  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
-          box-shadow: inset 0px 1px 1px white, 0px 1px px;
+  margin-top: -25px;
+  background-color: #f5f5f5;
+  height: 100%;
+  padding-bottom: 80px;
 }
 
 .create-company-form h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 40px;
   text-align: center;
+}
+
+.create-company-form h2 span {
+  text-transform: capitalize;
 }
 
 .create-company-form .text-above {
   text-align: center;
-  font-size: 16px;
-  margin-bottom: 50px;
-  line-height: 18px;
-}
-
-.create-company-form img {
-  width: 100px;
-  height: 100px;
+  font-size: 18px;
+  margin-bottom: 40px;
 }
 
 .create-company-form .create-form {
-  padding: 30px 50px;
+  padding: 10px 50px;
+  background-color: #fff;
+  border-radius: 5px;
   border: 1px solid lightgray;
-  width: 70%;
+  width: 50%;
   margin: auto;
 }
 
-.create-company-form .create-form hr {
-  border: 0;
-  height: 1px;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(131, 131, 131, 0)), color-stop(rgba(141, 141, 141, 0.75)), to(rgba(110, 110, 110, 0)));
-  background-image: linear-gradient(to right, rgba(131, 131, 131, 0), rgba(141, 141, 141, 0.75), rgba(110, 110, 110, 0));
+.create-company-form .create-form label {
+  font-size: 18px;
 }
 
 .create-company-form .create-form .information-selects {
@@ -47,25 +40,100 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 10px 40px;
-  margin: 10px;
 }
 
-.create-company-form .create-form select {
+.create-company-form .create-form .information-selects select {
+  border: 1px solid #fff;
+  border-bottom: 1px solid lightgray;
   background-color: #fff;
-  padding: 5px;
+  padding: 10px;
   display: block;
-  width: 320px;
+  width: 340px;
   outline: none;
-  margin-top: 30px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("https://image.flaticon.com/icons/svg/625/625946.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 310px;
+  background-size: 14px;
+}
+
+.create-company-form .create-form .information-selects select:focus {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.create-company-form .create-form .optional-info {
+  margin-top: -20px;
   margin-bottom: 20px;
 }
 
-.create-company-form .create-form .company-feedback {
-  padding: 10px 40px;
+.create-company-form .create-form .optional-info .website-box label {
+  margin-left: 10px;
 }
 
-.create-company-form .create-form .perks-flex {
+.create-company-form .create-form .optional-info .website-box #website-input {
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #fff;
+  border-bottom: 1px solid lightgray;
+  width: 300px;
+  outline: none;
+}
+
+.create-company-form .create-form .optional-info .website-box #website-input:focus {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.create-company-form .create-form hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(white), color-stop(rgba(50, 130, 184, 0.5)), to(white));
+  background-image: linear-gradient(to right, white, rgba(50, 130, 184, 0.5), white);
+}
+
+.create-company-form .create-form .company-feedback .star-rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.create-company-form .create-form .company-feedback .star-rating-container .star-rating {
+  margin-bottom: 20px;
+}
+
+.create-company-form .create-form .company-feedback .star-rating-container .star-rating label {
+  margin-right: 20px;
+  vertical-align: super;
+}
+
+.create-company-form .create-form .company-feedback .star-rating-container .star-rating .star {
+  padding: 5px;
+  width: 17px;
+  cursor: pointer;
+}
+
+.create-company-form .create-form .company-feedback h5 {
+  margin-left: 40px;
+}
+
+.create-company-form .create-form .company-feedback .perks-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,62 +141,68 @@
       justify-content: space-around;
 }
 
-.create-company-form .create-form .perks-flex p {
+.create-company-form .create-form .company-feedback .perks-flex p {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
-.create-company-form .create-form .perks-flex .perks-check {
+.create-company-form .create-form .company-feedback .perks-flex .perks-check {
   cursor: pointer;
+  vertical-align: middle;
   width: 20px;
   height: 20px;
-  background-color: #fff;
   -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
           box-shadow: inset 0px 1px 1px white, 0px 1px px;
   opacity: 0.5;
 }
 
-.create-company-form .create-form .perks-flex .perks-check:checked {
+.create-company-form .create-form .company-feedback .perks-flex .perks-check:checked {
   opacity: 1;
 }
 
-.create-company-form .create-form .comments-area {
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  background-color: #f3f3f3;
-  padding: 30px;
-}
-
-.create-company-form .create-form .comments-area textarea {
-  border: 1px solid lightgray;
-}
-
-.create-company-form .create-form .comments-area .submit-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 300px;
-  margin-left: 320px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.create-company-form .create-form .comments-area .submit-btns #create-btn {
-  width: 30px;
+.create-company-form .create-form .comments-label {
   margin-left: 30px;
-  background-color: #fff;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.create-company-form .create-form .comments-area {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.create-company-form .create-form .submit-btn .privacy-check {
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.create-company-form .create-form .submit-btn .privacy-check input {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.create-company-form .create-form .submit-btn .privacy-check label {
+  font-size: 14px;
+}
+
+.create-company-form .create-form .submit-btn #create-btn {
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 150px;
+  padding: 8px;
+  background-color: #adebad;
   border: 1px solid #adebad;
   font-size: 16px;
   cursor: pointer;
 }
 
-.create-company-form .create-form .comments-area .submit-btns button {
-  width: 30px;
-  margin-left: 30px;
-  background-color: #fff;
-  border: 1px solid #ff7979;
-  font-size: 16px;
-  cursor: pointer;
+.create-company-form .create-form .submit-btn #create-btn:hover {
+  border: 1px solid #98d698;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 /*# sourceMappingURL=createcompany.css.map */

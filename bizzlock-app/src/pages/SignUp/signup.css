@@ -81,13 +81,19 @@
           transition-duration: 0.3s;
 }
 
-.form-box form .company-results li {
-  font-size: 16px;
-  margin-top: 10px;
+.form-box form .company-results {
+  max-width: 318px;
+  /*border: 1px solid lightgray;*/
   margin-left: 45px;
-  padding: 10px;
+  margin-top: -12px;
+}
+
+.form-box form .company-results li {
+  font-size: 12px;
+  margin-left: 0px;
   cursor: pointer;
-  width: 300px;
+  max-width: 298px;
+  background-color: #f3f3f3;
 }
 
 .form-box form .company-results li:hover {

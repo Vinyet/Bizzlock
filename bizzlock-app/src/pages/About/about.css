@@ -1,0 +1,13 @@
+.about-container {
+  width: 500px;
+  border: 1px solid red;
+}
+
+.about-container p {
+  color: red;
+}
+
+p {
+  color: blue;
+}
+/*# sourceMappingURL=about.css.map */

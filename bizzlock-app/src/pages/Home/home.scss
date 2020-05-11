@@ -1,70 +1,55 @@
 .home-container {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap; /* cambiar por mediaquery */
-  //background-image: url('https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80');
-  background-image: url('https://images.unsplash.com/photo-1435575653489-b0873ec954e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-image: url('https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80');
   background-size: cover;
   background-repeat: no-repeat;
-  button {
-    background-color: #bee5ff;
-    color: #000;
-    border-radius: 1px;
-    border: 1px solid #3282b8;
-    padding: 8px;
-    margin-top: 40px;
-    margin-left: 50px;
-    width: 70%;
-    font-size: 16px;
-    cursor: pointer;
-    &:hover {
-      -webkit-box-shadow:inset 0px 0px 0px 1px #3282b8;
-      -moz-box-shadow:inset 0px 0px 0px 1px #3282b8;
-      box-shadow:inset 0px 0px 0px 1px #51a2d8;
-      transition-duration: 0.6s;
-      }
-    }
-
-  /* JOBSEEKER AND EMPLOYEE COMPONENTS */ 
   .jobseeker-container, .employee-container {
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
     margin: 80px auto;
     padding: 30px;
-    width: 360px;
-    height: 400px;
-    background-color: rgba(0,0,0,0.5);
-    color: #fff;
-    border-radius: 2px;
+    width: 380px;
+    height: 450px;
+    background-color: rgba(15,76,117,0.9);
+    border: none;
     img {
-      width: 100px;
+      width: 80px;
       margin: 20px auto;
       display: block;
     }
     p {
-      margin-top: 35px;
-      font-size: 16px;
+      line-height: 25px;
+      margin-top: 40px;
       text-align: center;
+      color: #fff;
     }
-    .jobseeker-select {
-      position: relative;    
-      margin: auto;
-      select {
-        background-color: #fff;
-        width: 250px;
-        padding: 5px;
-        margin-left: 50px;
-        margin-top: 20px;
-      option {
-        padding: 8px;
-        border: 1px solid #3282b8;
-        cursor: pointer;
-        user-select: none;
-        }
+    .MuiFormLabel-root {
+      color: #fff;
+    }
+    .MuiInputBase-root {
+      color: #fff;
+    }
+    button {
+      background-color: #fff;
+      color: #000;
+      border-radius: 2px;
+      padding: 8px;
+      margin-left: 1px;
+      margin-top: 25px;
+      width: 100%;
+      height: 40px;
+      cursor: pointer;
+      &:hover {
+        box-shadow:inset 0px 0px 0px 1px #51a2d8;
+        transition-duration: 0.3s;
       }
+    }
+    #employee-btn {
+      margin-top: 170px;
     }
   }
 } 
 
-/* HOW IT WORKS */
 .how-it-works-section {
   text-align: center;
   display: flex;
@@ -72,6 +57,9 @@
   width: 60%;
   margin: auto;
   padding-bottom: 60px;
+  #bizzlock-title-home {
+    color: $secondary-color;
+  }
   .how-it-works-icons {
     display: flex;
     justify-content: space-around;
@@ -84,6 +72,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    margin-left: 60px;
     p {
       font-size: 16px;
       padding: 10px;

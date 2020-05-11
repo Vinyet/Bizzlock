@@ -2,11 +2,26 @@ header {
   width: 100%;
   top: 0;
   background-color: #000;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .logo {
-  padding-left: 30px;
+  padding: 5px 50px;
   display: inline-block;
   width: 150px;
+}
+
+header .right-navigation {
+  margin-left: auto;
+  padding: 15px 50px;
+}
+
+header .right-navigation a {
+  padding: 10px;
+  margin-right: 30px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=header.css.map */

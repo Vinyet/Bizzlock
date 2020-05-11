@@ -1,25 +1,9 @@
-.comment-container {
-  position: relative;
-  display: flex;
-  border-bottom: 1px solid #bbe1fa;  
-  width: 600px;
-  height: 120px;
-  margin: 20px;
-  .comment-avatar {
-    background-image: url('https://image.flaticon.com/icons/svg/456/456212.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 20px;
-    width: 60px;
-    height: 60px;
-    flex: 1;
-  }
-  .comment-content {
-    padding: 20px;
-    font-size: 16px;
-    flex: 3;
-  }
-  textarea {
-    width: 400px;
-  }
+.comment-textarea {
+  padding: 15px 20px;
+  font-size: 16px;
+  width: 800px;
+  height: 100px;
+  outline: none;
+  resize: none;
+  overflow: auto;
 }

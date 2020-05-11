@@ -2,27 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useHistory } from 'react-router-dom';
 import { getCompanies } from '../../services/data';
-import axios from 'axios';
+import { getAPIcompanies } from '../../services/apiServices';
+import { register } from '../../services/auth';
+import Alert from '@material-ui/lab/Alert';
 
-    /* LOGIC:
-    -add query string to google call
-    -if neither have a match, display 'notonthelist' <a>
-    -if firebase has it, return firebase results (current) 
-    -if firebase doesn't have it, return google result 
-    */
 
 const SignUp = () => {
     const history = useHistory();
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
-    const API_BASE_URL = 'https://kgsearch.googleapis.com/v1/entities:search?key=AIzaSyB8WigLf8eLlQAQyN9D_0O2Qzndr22_vCA&types=organization&limit=1&indent=true&query="apple"'; // query = selectedCompany ¿? 
     const [ checked, setChecked ] = useState(false);
-    const [ dbCompanies, setDbCompanies ] = useState([]) // array: all companies fetched from firebase
-    const [ companies, setCompanies ] = useState([]); // array: companies from firebase that match what the user has typed (input) 
-    const [ APIcompanies, setAPIcompanies ] = useState([]); // object: empty, waiting for user to type.
-    const [ selectedCompany, setSelectedCompany ] = useState(''); // string: company selected from firebase (input)
-    const [ chosenCompany, setChosenCompany ] = useState(); // string: company chosen after click (button)
+    const [ dbCompanies, setDbCompanies ] = useState([]);
+    const [ companies, setCompanies ] = useState([]); 
+    const [ inputCompany, setInputCompany ] = useState(''); 
+    const [ chosenCompany, setChosenCompany ] = useState(); 
+    const [ result, setResult ] = useState(false);
+    const [ newCompanyGoogle, setNewCompanyGoogle ] = useState();
+    const [ newCompany, setNewCompany ] = useState('');
+    const [ privacyErrorMessage, setPrivacyErrorMessage ] = useState(false);
+    const [ companyErrorMessage, setCompanyErrorMessage ] = useState(false);
 
-    /* FETCH FIREBASE */ 
     useEffect(() => {
         const fetchCompanies = async () => {
             const dbCompanies = await getCompanies();
@@ -31,81 +29,121 @@ const SignUp = () => {
         fetchCompanies();
     }, []);
 
-    /* FETCH GOOGLE API */
-    function getAPIcompanies() {
-        return new Promise(async (resolve, reject) => {
-            try {
-            const response = await axios.get(API_BASE_URL);
-            resolve(response.data);
-        } catch (err) {
-            reject('Error fetching');
-            }
-        })
-    }
-
-    useEffect(() => {
-        const fetchAPIcompanies = async () => {
-            const googleAPIcompanies = await getAPIcompanies();
-            const APIcompanyName = googleAPIcompanies.itemListElement[0].result.name;
-            setAPIcompanies(APIcompanyName) // please     
-        }
-        fetchAPIcompanies();
-    }, [])
-
-
-    /* HANDLES COMPANY SELECTED BY USER */
-    const handleSelect = (e) => {
+    const handleInput = async (e) => {
         const submittedCompany = e.target.value;
-        setSelectedCompany(submittedCompany);
-
+        setInputCompany(submittedCompany);
         if (submittedCompany && submittedCompany.length > 2) {
-
-            // si no está ni en Firebase, ni en Google -> return { <a href="/create-company" id="notonthelist">X does not have a registry yet, but you can create it here.</a> }
-
-            // si está en Firebase:
             const resultsFilter = dbCompanies.filter((company) => {
                 const filteredCompanies = company.name.toLowerCase().includes(submittedCompany.toLowerCase()); 
-                return filteredCompanies; // boolean
+                return filteredCompanies;
             })
-            setCompanies(resultsFilter); 
-        } else {
-            // si no está en Firebase, pero sí en Google
-            setCompanies([]);
+            if (!!resultsFilter.length) {
+                setCompanies(resultsFilter);
+                (submittedCompany.length < 4) ? setResult(false) : setResult(true);
+            } else {
+                setCompanies([]);
+                (submittedCompany.length < 4) ? setResult(false) : setResult(true);
+                const googleAPIcompanies = await getAPIcompanies(submittedCompany);
+                const APIcompanies = googleAPIcompanies.itemListElement.filter(company => {
+                    company = { name: company.result.name, type: company.result['@type'] }
+                    if (company.type.includes("Organization")) { 
+                        const filteredAPIcompanies = company.name.toLowerCase().includes(submittedCompany.toLowerCase()); 
+                        return filteredAPIcompanies; 
+                    }
+                }).map(elem => {
+                    elem = {
+                        name: elem.result.name,
+                        type: elem.result['@type'],
+                        description: elem.result.detailedDescription.articleBody,
+                        website: elem.result.url,
+                        image: elem.result.image
+                    };
+                    const companyType = elem.type.filter(x => x === "Organization") 
+                    elem.type = companyType[0];
+                    return elem;
+                })
+                if (APIcompanies.length) {
+                    setNewCompanyGoogle(APIcompanies[0]);
+                    setNewCompany('');
+                } else if (googleAPIcompanies.itemListElement.length && !APIcompanies.length) {
+                    setNewCompany(submittedCompany)
+                }
+            }
         }
     }
 
-    // sustituir alerts por cambios estilos FormErrorHandler
-    function handleClick(e) {
+    const handleInputSelector = (e) => {
+        const pickedCompanyId = e.target.id;
+        if (companies && !newCompanyGoogle) {
+            const getChosenCompany = companies.filter((company) => {
+                return company.id === pickedCompanyId;
+            })
+            setChosenCompany(getChosenCompany[0]);
+        } else if (newCompanyGoogle) {
+                setChosenCompany(newCompanyGoogle);
+            }
+        const listDisplay = e.target;
+        if (listDisplay.style.display = 'block') {
+            listDisplay.style.display = 'none';
+            return listDisplay;
+        } else if (listDisplay.style.display = 'none') {
+            listDisplay.style.display = 'block';
+            return listDisplay;
+        }
+    } 
+
+    const handleClick = async (e) => {
         e.preventDefault();
-        if (chosenCompany === "") {
-            return alert("Choose a company first!")
+        if (!chosenCompany) {
+            setCompanyErrorMessage(true);
         } else if (checked === false) {
-            return alert('Please, accept the Privacy Policy first.')
+            setPrivacyErrorMessage(true);
+        } else if (newCompanyGoogle) {
+            register();
+            history.push('/create-company', newCompanyGoogle);
+        } else if (companies) {
+            register();
+            history.push('/update-company', chosenCompany);
+        } 
+    }
+
+    function showLink() { 
+        if ((inputCompany.length < 3 && companies) || newCompanyGoogle) {
+            return false;
         } else {
-        history.push(`/update-company?company=${chosenCompany}`);
+            return <p onClick={() => history.push('/create-company', newCompany)}>&apos;{newCompany}&apos; has not been registered yet. Create it here!</p>
         }
     }
 
     return (
-        <animated.div style={fadeIn} className="form-box">
-            <form action=""> 
-                <h3>What is your company&apos;s name?</h3>
+        <div id="signup-container">
+            <animated.div style={fadeIn} className="form-box">
+                <form action=""> 
+                    <h3>What is the company&apos;s name?</h3>
                     <div>
-                        <input type="search" placeholder="Your company" value={selectedCompany} onChange={handleSelect}></input>
-                        <div className="company-results">
-                            {companies.map((company) => 
-                                <li key={company.id} value={chosenCompany} onClick={setChosenCompany}>{company.name}</li>
-                            )}
-                        </div>
+                        <input type="search" placeholder="Enter a company" value={inputCompany} onChange={handleInput}>{}</input>
+                            {(result) ? 
+                                <div className="company-results">
+                                    {companies.map((company) => 
+                                        <li key={company.id} id={company.id} value={chosenCompany} onClick={handleInputSelector}>{company.name}</li>
+                                    )}
+                                    {newCompanyGoogle ? <li name={newCompanyGoogle.name} value={newCompanyGoogle} onClick={handleInputSelector}>{newCompanyGoogle.name}</li> : null}
+                                </div>
+                            : null}
                     </div>
-                <div className="new-registry-link"></div>
-                <div className='privacy-check'>
-                    <input type="checkbox" id="check-privacy" onChange={()=> setChecked(!checked)}></input>
-                    <label htmlFor="true">I accept Bizzlock&apos;s <a href="/privacy-policy" id="privacy-link">Privacy Policy</a></label>
-                </div>
-                <input type="submit" id="signup-btn" value="UPDATE" onClick={handleClick}></input>
-            </form>
-        </animated.div>    
+                    <div className="new-registry-text">
+                        {showLink()}
+                    </div>
+                    <div className='privacy-check'>
+                        <input type="checkbox" id="check-privacy" onChange={(e)=> setChecked(!checked)}></input>
+                        <label htmlFor="true">I accept Bizzlock&apos;s <a href="/privacy-policy" id="privacy-link">Privacy Policy</a></label>
+                        {(companyErrorMessage) ? <Alert variant="outlined" severity="error">Please, choose a company to update or create.</Alert> : null}
+                        {(privacyErrorMessage) ? <Alert variant="outlined" severity="error">Please, accept the Privacy Policy to proceed.</Alert> : null}
+                    </div>
+                    <input type="submit" id="signup-btn" value="GO!" onClick={handleClick}></input>
+                </form>
+            </animated.div>    
+        </div>
     )
 }
 

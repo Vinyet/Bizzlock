@@ -51,7 +51,8 @@
 
 .form-box form #notonthelist {
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 100px;
+  margin-bottom: -20px;
   margin-left: 45px;
 }
 
@@ -70,6 +71,7 @@
   border-radius: 3px;
   color: #fff;
   font-size: 16px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -79,10 +81,19 @@
           transition-duration: 0.3s;
 }
 
+.form-box form .company-results {
+  max-width: 318px;
+  /*border: 1px solid lightgray;*/
+  margin-left: 45px;
+  margin-top: -12px;
+}
+
 .form-box form .company-results li {
-  font-size: 16px;
+  font-size: 12px;
+  margin-left: 0px;
   cursor: pointer;
-  padding: 5px;
+  max-width: 298px;
+  background-color: #f3f3f3;
 }
 
 .form-box form .company-results li:hover {

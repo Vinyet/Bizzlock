@@ -1,55 +1,146 @@
-.create-form {
-  width: 700px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin: 20px auto;
-  padding: 30px;
-}
-
-.create-form h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.create-form p {
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 20px;
-  line-height: 18px;
-}
-
-.create-form .create-company-form {
-  margin-top: 50px;
-  width: 600px;
+.create-company-form {
+  margin-top: -25px;
+  background-color: #f5f5f5;
   height: 100%;
-  padding: 30px 50px;
+  padding-bottom: 80px;
 }
 
-.create-form .create-company-form label {
+.create-company-form h2 {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.create-company-form h2 span {
+  text-transform: capitalize;
+}
+
+.create-company-form .text-above {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.create-company-form form {
+  padding: 50px;
+  background-color: #fff;
+  width: 50%;
+  margin: auto;
+  -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.create-company-form form label {
+  font-size: 18px;
+}
+
+.create-company-form form .company-information .top-description-photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.create-company-form form .company-information .top-description-photo .company-description {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
   font-size: 16px;
-  margin: 10px 0px 25px 0px;
+  margin-left: 20px;
+  padding: 5px;
+  line-height: 25px;
 }
 
-.create-form .create-company-form input {
-  margin-bottom: 15px;
-  margin-left: -5px;
-  width: 400px;
-  height: 30px;
-  border: 1px solid lightgray;
-  display: block;
+.create-company-form form .company-information .top-description-photo img {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
-.create-form .create-company-form select {
+.create-company-form form .company-information .top-location-industry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.create-company-form form .company-information .top-location-industry label {
+  font-size: 14px;
+}
+
+.create-company-form form .company-information .top-location-industry select {
   background-color: #fff;
   padding: 5px;
-  display: block;
-  width: 320px;
+  width: 200px;
+  margin-right: 25px;
+  cursor: pointer;
   outline: none;
 }
 
-.create-form .create-company-form .perks-flex {
+.create-company-form form .company-information .information-selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.create-company-form form .company-information .information-selects select {
+  border: 1px solid #fff;
+  border-bottom: 1px solid lightgray;
+  background-color: #fff;
+  padding: 10px;
+  display: block;
+  width: 340px;
+  outline: none;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("https://image.flaticon.com/icons/svg/625/625946.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 310px;
+  background-size: 14px;
+}
+
+.create-company-form form .company-information .information-selects select:focus {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.create-company-form form .company-information .website-box label {
+  margin-left: 10px;
+}
+
+.create-company-form form .company-information .website-box #website-input {
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #fff;
+  border-bottom: 1px solid lightgray;
+  width: 300px;
+  outline: none;
+}
+
+.create-company-form form .company-information .website-box #website-input:focus {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.create-company-form form .perks-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,51 +148,131 @@
       justify-content: space-around;
 }
 
-.create-form .create-company-form .perks-flex p {
+.create-company-form form .perks-flex p {
   display: inline-block;
-  margin-left: -10px;
+  margin-left: 15px;
 }
 
-.create-form .create-company-form .perks-flex .perks-check {
+.create-company-form form .perks-flex .perks-check {
+  cursor: pointer;
+  vertical-align: middle;
   width: 20px;
+  height: 20px;
+  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px px;
+          box-shadow: inset 0px 1px 1px white, 0px 1px px;
+  opacity: 0.5;
+}
+
+.create-company-form form .perks-flex .perks-check:checked {
+  opacity: 1;
+}
+
+.create-company-form form hr {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  margin-bottom: 40px;
+}
+
+.create-company-form form hr:before {
+  content: '';
+  background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#b13636), to(transparent));
+  background: linear-gradient(to right, transparent, #b13636, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+
+.create-company-form form hr:after {
+  content: attr(data-content);
+  position: relative;
   display: inline-block;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  color: black;
+  padding: 0 .5em;
+  line-height: 1.5em;
+  color: #818078;
+  background-color: #fcfcfa;
 }
 
-.create-form .create-company-form textarea {
+.create-company-form form .company-feedback .star-rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 40px;
+}
+
+.create-company-form form .company-feedback .star-rating-container .star-label {
+  margin-right: 20px;
+}
+
+.create-company-form form .company-feedback .star-rating-container .star-rating {
+  height: 40px;
+}
+
+.create-company-form form .company-feedback .star-rating-container .star-rating fieldset {
+  padding: 0px;
+}
+
+.create-company-form form .company-feedback .star-rating-container .star-rating fieldset label {
+  margin-right: 10px;
+  margin-top: -5px;
+  font-size: 18px;
+}
+
+.create-company-form form .company-feedback h5 {
+  margin-left: 40px;
+}
+
+.create-company-form form .comments-label {
+  margin-left: 30px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.create-company-form form .comments-area {
+  margin-top: 10px;
   padding: 10px;
-  height: 100px;
+  border: 1px solid #fff;
 }
 
-.create-form .create-company-form .submit-btns {
+.create-company-form form .submit-btn .privacy-check {
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.create-company-form form .submit-btn .privacy-check input {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.create-company-form form .submit-btn .privacy-check label {
+  font-size: 14px;
+}
+
+.create-company-form form .submit-btn #create-btn {
+  margin-left: 30px;
   margin-top: 20px;
-}
-
-.create-form .create-company-form #create-btn {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  width: 50%;
-  display: inline-block;
+  margin-bottom: 20px;
+  width: 150px;
+  padding: 8px;
   background-color: #adebad;
-  border: 2px solid #adebad;
+  border: 1px solid #adebad;
   font-size: 16px;
   cursor: pointer;
 }
 
-.create-form .create-company-form button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background-color: #ff7979;
-  border: 1px solid white;
-  padding: 10px;
-  width: 50%;
-  font-size: 16px;
-  display: inline-block;
-  cursor: pointer;
+.create-company-form form .submit-btn #create-btn:hover {
+  border: 1px solid #98d698;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 /*# sourceMappingURL=createcompany.css.map */

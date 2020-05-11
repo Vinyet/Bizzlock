@@ -1,121 +1,197 @@
-/* MAIN CONTAINER */
+/* TOP MENU */
 
 .listing-banner {
   background-color: #000;
   display: flex;
   justify-content: space-around;
-  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  #listing-search { /* move to right and move logo to left when scrolling */
+  border-bottom: 1px solid $primary-color;
+  #listing-search { 
     width: 100%;
-    height: 55px;
+    height: 50px;
     padding: 20px;
-    border-radius: 2px;
-    border: 1px solid #000;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     color: #fff;
-    background-color: rgb(29, 28, 28);
-    padding-left: 445px;
+    padding-left: 450px;
     flex: 3;
   }  
   select {
     flex: 1;
-    padding: 10px;
     font-size: 14px;
     text-transform: uppercase;
-    background-color: #000;
-    border: 1px solid #000;
     color: $primary-color;
-    border-bottom: 1px solid $primary-color;
-    option { /* not working */ 
-      border: 1px solid #000;
-      border-left: 1px solid $primary-color;
-      padding: 20px;
-      color: $primary-color;
-      background-color: #000;
-    }
   }
 }
 
+/* MAIN CONTAINER */
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  div {
+    width: 1rem;
+    height: 1rem;
+    margin: 3rem 0.2rem;
+    background: #8385aa;
+    border-radius: 50%;
+    animation: bouncing-loader 0.6s infinite alternate;
+  }
+}
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* LISTING */
 .listing-container {
   display: flex;
-  justify-content: space-around;
-}
-  
-/* SIDEBAR */ 
-.listing-sidebar {
-  position: sticky;
-  top: 0;
-  flex: 1;
-  padding: 10px 40px;
-  width: 200px;
-  height: fit-content;
-  border-radius: 2px;
-  h4 {
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 15px;
-  }
-  p {
-    font-size: 16px;
-  }
-  select {
-    padding: 8px;
-    width: 300px;
+  justify-content: flex-start;
+  background-color: #F4F5F2;
+  /* SIDEBAR */
+  .listing-sidebar {
     background-color: #fff;
-    border: 1px solid #fff;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  button { /* make it sticky */
-    background-color: #000;
-    color: #fff;
-    padding: 7px;
-    margin: 15px 0px;
-    border: 1px solid black;
-    font-size: 18px;
-    width: 180px;
-    cursor: pointer;
-  }
-}
-
-/* RESULTS BOX */
-.listing-results {
-  border: 1px solid lightgray;
-  flex: 4;
-  font-size: 16px;
-  border-radius: 2px;
-  li {
-    list-style: none;
-    padding: 10px;
-  }
-  .company-result-single {
-    display: flex; 
-  }
-  .company-result-single {
-    margin-top: 20px;
-    width: 90%;
-    padding: 20px;
-    display: flex; 
-    border: 1px solid #fff;
-    cursor: pointer;
-    &:hover {
-      border: 1px solid lightgray;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 40px;
+    flex: 1;
+    padding: 0px 30px;
+    width: 350px;
+    .predeterminado {
+      color: $secondary-color;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-bottom: -10px;
     }
-    .company-photo img { /* change to background img of div */
-      width: 75px;
-      margin-top: 20px;
-      height: auto;
+    p {
+      font-size: 14px;
     }
-    .company-info {
-      padding-left: 30px;
+    h4 {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+    fieldset {
+      margin-left: -20px;
+      span {
+        margin-right: 20px;
+      }
+    }
+    .MuiAutocomplete-root, MuiAutocomplete-hasClearIcon {
+      margin-left: 20px;
+    }
+    .perks-flex {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
       p {
-        font-size: 16px;
+        display: inline-block;
+        margin-left: 15px;
+      }
+      .perks-check {
+        cursor: pointer;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+        &:checked {
+          opacity: 1;
+        }
+      }
+    }
+    .btn-box {
+      position: sticky;
+      bottom: 0;
+      button { 
+        position: sticky;
+        background-color: #000;
+        border: 1px solid darkgray;
+        color: #fff;
+        letter-spacing: 3px;
+        padding: 7px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        font-size: 18px;
+        width: 100%;
+        cursor: pointer;
+        &:hover {
+          background-color: $primary-color;
+          color: #000;
+          transition-duration: .3s;
+        }
       }
     }
   }
 }
+
+  /* RESULTS BOX */
+  .listing-results {
+    margin-left: 50px;
+    padding: 0px 50px 80px 0px;
+    .results-box {
+      margin-top: 50px;
+      flex: 4;
+      #no-results-box {
+        display: flex;
+        flex-direction: column;
+        background: none;
+        border: none;
+        cursor: default;
+        img {
+          width: 60px;
+          margin: 10px auto;
+        }
+        p {
+          margin: 30px auto;
+          text-align: center;
+          font-size: 18px;
+          line-height: 40px;
+        }
+      }
+      .company-result-single {
+        border: 1px solid lightgray;
+        display: flex; 
+        padding: 20px;
+        height: fit-content;
+        cursor: pointer;
+        background-color: #fff;
+        &:hover {
+          border: 1px solid gray;
+          transition-duration: 0.5s;
+        }
+        .company-photo img { 
+          width: 180px;
+          margin-top: 20px;
+          height: auto;
+        }
+        .company-info {
+          padding-left: 30px;
+          h2 {
+            font-size: 20px;
+          }
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .company-details {
+      border: 1px solid lightgray;
+      padding: 20px;
+    }
+  }
+
+
+

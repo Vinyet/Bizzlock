@@ -1,35 +1,12 @@
-.comment-container {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #bbe1fa;
-  width: 600px;
-  height: 120px;
-  margin: 20px;
-}
-
-.comment-container .comment-avatar {
-  background-image: url("https://image.flaticon.com/icons/svg/456/456212.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 20px;
-  width: 60px;
-  height: 60px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.comment-container .comment-content {
-  padding: 20px;
-  font-size: 16px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-}
-
-.comment-container textarea {
-  width: 400px;
+.comment-textarea {
+  padding: 15px 20px;
+  font-size: 14px;
+  width: 800px;
+  height: 100px;
+  font-family: 'Lato', sans-serif;
+  border: 1px solid lightgray;
+  outline: none;
+  resize: none;
+  overflow: auto;
 }
 /*# sourceMappingURL=comments.css.map */

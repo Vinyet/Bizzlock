@@ -26,21 +26,21 @@
         font-size: 18px;
       }
       .company-feedback {
+        margin-top: 40px;
         .star-rating-container {
           display: flex;
-          flex-direction: column;
-          margin-left: 40px;
-          margin-top: 40px;
+          justify-content: end;
+          margin-bottom: 10px;
+          border: 1px solid white;
+          .star-label {
+            border: 1px solid white;
+          }
           .star-rating {
-            margin-bottom: 20px;
-            label {
-              margin-right: 20px;
-              vertical-align: super;
-            }
-            .star {
-              padding: 5px;
-              width: 17px;
-              cursor: pointer;
+            border: 1px solid white;
+            fieldset {
+              border: 1px solid white;
+              padding: 10px;
+              font-size: 20px;
             }
           }
         }

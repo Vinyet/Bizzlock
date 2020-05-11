@@ -1,120 +1,124 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useLocation } from 'react-router-dom';
-import { getCompanies } from '../../services/data';
+import { getCompanies, getUsers } from '../../services/data';
+import { getCurrentUser } from '../../services/auth';
 import CommentCreator from '../../components/Comments/CommentCreator';
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Alert from '@material-ui/lab/Alert';
+
 
 const UpdateCompany = props => {
-    const location = useLocation();
     const fadeIn = useSpring({opacity: 1, from: {opacity: 0}});
-    const [ firebaseCompany, setFirebaseCompany ] = useState();
-    const [ checked, setChecked ] = useState(false); 
-    const [ overallRating, setOverallRating ] = useState(undefined); // 0 is falsy?
+    const loc = useLocation();
+    const [ firebaseCompany, setFirebaseCompany ] = useState([]);
+    const [ firebaseUserData, setFirebaseUserData ] = useState([]);
+    const [ updateCompany, setUpdateCompany ] = useState({});
+    const [ user, setUser ] = useState();
     const [ workLife, setWorkLife ] = useState(undefined);
     const [ salary, setSalary ] = useState(undefined);
+    const [ overallRating, setOverallRating ] = useState(undefined);
     const [ comment, setComment ] = useState('');
     const [ form, setForm ] = useState({});
+    const [ successMessage, setSuccessMessage ] = useState(false);
 
     useEffect(() => {
-        const companyParsing = () => {
-            const firebaseCompany = {
-                name: location.state[0].name,
-                industry: location.state[0].industry,
-                location: location.state[0].location,
-                comments: location.state[0].comments,
-                // founded and description will disappear?
-            }
-        setFirebaseCompany(firebaseCompany);
+        const fetchCompanies = async () => {
+            const getFirebaseCompanies = await getCompanies();
+            setFirebaseCompany(getFirebaseCompanies);
         }
+        fetchCompanies();
+    }, []);
+
+    useEffect(() => {
+        const update = firebaseCompany.filter(company => {
+            const match = company.id === loc.state.id;
+            return match;
+        })
+        setUpdateCompany(update)
+    }, [firebaseCompany])
+
+    useEffect(() => {
+        const getFirebaseUser = async () => {
+            const getFirebaseUserData = await getUsers();
+            setFirebaseUserData(getFirebaseUserData);
+        }
+        getFirebaseUser();
     })
 
-    console.log('location is ', location)
-
-    const handleWorkLife = (e) => {
-        const ratingNumber = e.target.name;
-        setWorkLife(ratingNumber);
-        return (e.target.style.filter === 'grayscale(100%)') ? e.target.style.filter = 'grayscale(0%)' : e.target.style.filter = 'grayscale(100%)';
-    }
-
-    const handleSalary = (e) => {
-        const ratingNumber = e.target.name;
-        setSalary(ratingNumber);
-        return (e.target.style.filter === 'grayscale(100%)') ? e.target.style.filter = 'grayscale(0%)' : e.target.style.filter = 'grayscale(100%)';
-    }
-
-    const handleOverallRating = (e) => {
-        const ratingNumber = e.target.name;
-        setOverallRating(ratingNumber);
-        return (e.target.style.filter === 'grayscale(100%)') ? e.target.style.filter = 'grayscale(0%)' : e.target.style.filter = 'grayscale(100%)';
-    }
-
     const handleFormSubmit = (e) => {
+        console.log('already in firebase to be updated: ', updateCompany[0])
         e.preventDefault();
-        if (!checked) {
-            alert('Please, accept the Privacy policy')
-        } else {
-            /*const form = {
-                workLife: (firebaseCompany.worklife + worklife) / 2, 
-                salary: (firebaseCompany.salary + salary) / 2,
-                overallRating: (firebaseCompany.overallRating + overallRating) / 2,
-                comment: company.comments.push(comment)
-            }           */
-            setForm(form);
-            /*const user = { input: form }
-            await register(user);
-            postCompany(form);*/
-        }      
+        const form = {
+            workLife: (updateCompany[0].workLife + workLife) / updateCompany.usersWhoRated,
+            salary: (updateCompany[0].salary + salary) / updateCompany.usersWhoRated,
+            overallRating: (updateCompany[0].overallRating + overallRating) / updateCompany.usersWhoRated,
+            comments: updateCompany[0].comments.push(comment) 
+        }
+        setForm(form);
+        const user = getCurrentUser();
+        setUser(user);
+        firebaseUserData.filter((firebaseUser) => {
+            if (firebaseUser.uid === user.uid) {
+                const sameUser = firebaseUser;
+                console.log('This user is already registered. SameUser is :', sameUser);
+                if (sameUser.ratedCompanies.includes(updateCompany.name)) {
+                    console.log('This user has already voted here');
+                    alert('You can&apos; vote on the same company twice!');
+                } else {
+                    sameUser.ratedCompanies.push(updateCompany);
+                }
+            }
+        })
+        const usersWhoRated = updateCompany[0].usersWhoRated.push(user.uid);
+        //postCompany(form, userseWhoRated);   POST OR UPDATE?? 
     }
+
 
     return (
         <animated.div style={fadeIn} className="update-container">
-            <h2></h2>
+            <h2>Give your feedback on {loc.state.name}</h2>
                 <p className="text-above">Fill the following form to update this company&apos;s registry. <br/>No one in the organisation will get notified, nor will they know you updated this file.</p>           
                 <form className="create-form" onSubmit={handleFormSubmit}>   
                     <div className="company-feedback">   
                             <div className="star-rating-container">
-                                <div className='star-rating'>
-                                <label htmlFor='star-rating'>How is the work/life balance?</label>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star worklife-star" name={1} alt="one-star" onClick={handleWorkLife}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star worklife-star" name={2} alt="three-stars" onClick={handleWorkLife}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star worklife-star" name={3} alt="two-stars" onClick={handleWorkLife}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star worklife-star" name={4} alt="four-stars" onClick={handleWorkLife}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star worklife-star" name={5} alt="five-stars" onClick={handleWorkLife}></img>
+                                <label htmlFor='star-rating' className='star-label'>How is the work/life balance?</label>
+                                <div className="star-rating">
+                                    <Box component="fieldset" mb={3} borderColor="transparent">
+                                        <Rating name="worklife-controlled" onChange={(event, newValue) => {setWorkLife(newValue)}} />
+                                    </Box>      
                                 </div>
-                                <div className='star-rating'>
-                                <label htmlFor='star-rating'>How well does this company pay?</label>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star pay-star" name={1} alt="one-star" onClick={handleSalary}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star pay-star" name={2} alt="two-stars" onClick={handleSalary}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star pay-star" name={3} alt="three-stars" onClick={handleSalary}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star pay-star" name={4} alt="four-stars" onClick={handleSalary}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star pay-star" name={5} alt="five-stars" onClick={handleSalary}></img>
+                            </div>
+                            <div className="star-rating-container">
+                                <label htmlFor='star-rating' className='star-label'>How well does this company pay?</label>
+                                <div className="star-rating">
+                                    <Box component="fieldset" mb={3} borderColor="transparent">
+                                        <Rating name="salary-controlled" onChange={(event, newValue) => {setSalary(newValue)}} />
+                                    </Box>
                                 </div>
-                                <div className='star-rating'>
-                                <label htmlFor='star-rating'>How would you rate your stay at this company?</label>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star overall-star" name={1} alt="one-star" onClick={handleOverallRating}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star overall-star" name={2} alt="two-stars" onClick={handleOverallRating}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star overall-star" name={3} alt="three-stars" onClick={handleOverallRating}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star overall-star" name={4} alt="four-stars" onClick={handleOverallRating}></img>
-                                    <img src="https://image.flaticon.com/icons/svg/2107/2107957.svg" style={{filter: 'grayscale(100%)'}} className="star overall-star" name={5} alt="five-stars" onClick={handleOverallRating}></img>
-                                </div>
+                            </div>
+                            <div className="star-rating-container"> 
+                                <label htmlFor='star-rating' className='star-label'>How would you rate your stay at this company?</label>
+                                <div className="star-rating">    
+                                    <Box component="fieldset" mb={3} borderColor="transparent">
+                                        <Rating name="overall-controlled" onChange={(event, newValue) => {setOverallRating(newValue); }}/>
+                                    </Box>
+                                </div>    
                             </div>
                     </div>
                     <label htmlFor="comment" className="comments-label">Comment (optional)</label>
                     <div className="comments-area">
-                        <CommentCreator value={comment} onChange={setComment}/>
-                    </div>
+                        <CommentCreator setComment={setComment} />                    </div>
                     <div className="submit-btn">
-                        <div className='privacy-check'>
-                            <input type="checkbox" id="check-privacy" onChange={(e)=> setChecked(!checked)}></input>
-                           <label htmlFor="true">I accept Bizzlock&apos;s <a href="/privacy-policy" id="privacy-link">Privacy Policy</a>.</label>
-                        </div>
                         <input type="submit" id="create-btn"></input>
+                        {(successMessage) ?  <Alert variant="outlined" severity="success">Great! Your registry will be up soon. <a href="/">Back to homepage.</a></Alert>  : null}
                     </div>
                 </form>
         </animated.div>    
     )
 }
-
-/* show other people's comments? insta a finalizar el formulario y a dar confianza! */
 
 export default UpdateCompany;

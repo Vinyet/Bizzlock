@@ -13,7 +13,7 @@ const Employee = () => {
         <>
         <div className="employee-container">
             <img src='https://image.flaticon.com/icons/svg/1584/1584911.svg' alt="employee-icon"/>
-            <p>I work for a company and want to share my experience with other potential employees</p>          
+            <p>I am currently working for a company and I want to share my experience with other employees and potential employees</p>          
             <button id='employee-btn' onClick={handleClick}>GIVE FEEDBACK</button>
         </div>    
         </>

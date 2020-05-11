@@ -1,14 +1,20 @@
 import firebase from '../config';
 
 
+// REGISTER
 export async function register() {
   try {
     await firebase.auth().signInAnonymously();
-    return true;
   } catch (error) {
     console.log('Error de registro: ', error)
-    return false;
   }
 }
 
-
+// GET CURRENT USER
+export function getCurrentUser() {
+  try {
+    return firebase.auth().currentUser;
+  } catch (error) {
+    console.log('Current user error: ', error)
+  }
+}

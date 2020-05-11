@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 
 
-const CommentCreator = () => {
-    const [ comment, setComment ] = useState('');
-    const [ error, setError ] = useState(''); 
+const CommentCreator = ({setComment}) => {
 
-    const handleSubmitForm = (e) => {
-        e.preventDefault();
-        setError('');
-
-        if(!comment) {
-            setError('Message is empty');
-            return;
-        }
+    const handleTextarea = (e) => {
+        const message = e.target.value;
+        setComment(message);
     }
 
     return (
         <>
-        <textarea className="comment-textarea" placeholder="Leave a comment explaining your experiences with this company." value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+        <textarea className="comment-textarea" placeholder="Leave a comment explaining your experiences with this company." onChange={handleTextarea}></textarea>
         </>
     )
 }

@@ -7,52 +7,61 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   /* cambiar por mediaquery */
-  background-image: url("https://images.unsplash.com/photo-1435575653489-b0873ec954e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-image: url("https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80");
   background-size: cover;
   background-repeat: no-repeat;
   /* JOBSEEKER AND EMPLOYEE COMPONENTS */
 }
 
-.home-container button {
-  background-color: #bee5ff;
-  color: #000;
-  border-radius: 1px;
-  border: 1px solid #3282b8;
-  padding: 8px;
-  margin-top: 40px;
-  margin-left: 50px;
-  width: 70%;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.home-container button:hover {
-  -webkit-box-shadow: inset 0px 0px 0px 1px #3282b8;
-  box-shadow: inset 0px 0px 0px 1px #51a2d8;
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
-}
-
 .home-container .jobseeker-container, .home-container .employee-container {
+  -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   margin: 80px auto;
   padding: 30px;
   width: 360px;
   height: 400px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(15, 76, 117, 0.9);
   color: #000;
-  border: 1px solid lightgray;
+  border: none;
 }
 
 .home-container .jobseeker-container img, .home-container .employee-container img {
-  width: 100px;
+  width: 80px;
   margin: 20px auto;
   display: block;
 }
 
 .home-container .jobseeker-container p, .home-container .employee-container p {
-  margin-top: 35px;
+  margin-top: 40px;
   font-size: 16px;
   text-align: center;
+  color: #fff;
+}
+
+.home-container .jobseeker-container button, .home-container .employee-container button {
+  background-color: #fff;
+  color: #000;
+  border-radius: 1px;
+  border-radius: 2px;
+  border: none;
+  padding: 8px;
+  margin-left: 50px;
+  width: 70%;
+  font-size: 16px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.home-container .jobseeker-container button:hover, .home-container .employee-container button:hover {
+  -webkit-box-shadow: inset 0px 0px 0px 1px #3282b8;
+  box-shadow: inset 0px 0px 0px 1px #51a2d8;
+  opacity: 1;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.home-container .jobseeker-container #employee-btn, .home-container .employee-container #employee-btn {
+  margin-top: 150px;
 }
 
 .home-container .jobseeker-container .jobseeker-select, .home-container .employee-container .jobseeker-select {
@@ -62,20 +71,14 @@
 
 .home-container .jobseeker-container .jobseeker-select select, .home-container .employee-container .jobseeker-select select {
   background-color: #fff;
+  border-radius: 2px;
+  border: none;
   width: 250px;
-  padding: 5px;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
   margin-left: 50px;
   margin-top: 20px;
-}
-
-.home-container .jobseeker-container .jobseeker-select select option, .home-container .employee-container .jobseeker-select select option {
-  padding: 8px;
-  border: 1px solid #3282b8;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 /* HOW IT WORKS */

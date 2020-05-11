@@ -12,7 +12,7 @@
     margin: 80px auto;
     padding: 30px;
     width: 360px;
-    height: 400px;
+    height: 420px;
     background-color: rgba(15,76,117,0.9);
     color: #000;
     border: none;
@@ -22,6 +22,7 @@
       display: block;
     }
     p {
+      line-height: 25px;
       margin-top: 40px;
       font-size: 16px;
       text-align: center;
@@ -34,8 +35,9 @@
       border-radius: 2px;
       border: none;
       padding: 8px;
-      margin-left: 50px;
-      width: 70%;
+      margin-left: 1px;
+      margin-top: 10px;
+      width: 100%;
       font-size: 16px;
       opacity: 0.8;
       cursor: pointer;
@@ -45,31 +47,13 @@
         box-shadow:inset 0px 0px 0px 1px #51a2d8;
         opacity: 1;
         transition-duration: 0.4s;
-        }
       }
-    #employee-btn {
-      margin-top: 130px;
     }
-    .jobseeker-select {
-      position: relative;    
-      margin: auto;
-      select {
-        background-color: #fff;
-        border-radius: 5px; 
-        border: none;
-        width: 250px;
-        padding: 10px;
-        -webkit-appearance: button;
-        cursor: pointer;
-        outline: none;
-        margin-left: 50px;
-        margin-top: 20px;
-      }
+    #employee-btn {
+      margin-top: 140px;
     }
   }
 } 
-
-
 
 /* HOW IT WORKS */
 .how-it-works-section {
@@ -79,6 +63,9 @@
   width: 60%;
   margin: auto;
   padding-bottom: 60px;
+  #bizzlock-title-home {
+    color: $secondary-color;
+  }
   .how-it-works-icons {
     display: flex;
     justify-content: space-around;
@@ -91,6 +78,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    margin-left: 60px;
     p {
       font-size: 16px;
       padding: 10px;

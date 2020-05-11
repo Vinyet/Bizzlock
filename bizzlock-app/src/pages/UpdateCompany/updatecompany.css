@@ -1,4 +1,115 @@
-label {
-  color: red;
+.update-container {
+  margin-top: -25px;
+  background-color: #f5f5f5;
+  height: 100%;
+  padding-bottom: 80px;
+}
+
+.update-container h2 {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.update-container h2 span {
+  text-transform: capitalize;
+}
+
+.update-container .text-above {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.update-container .create-form {
+  padding: 10px 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  width: 50%;
+  margin: auto;
+}
+
+.update-container .create-form label {
+  font-size: 18px;
+}
+
+.update-container .create-form .company-feedback .star-rating-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: 40px;
+  border: 1px solid red;
+}
+
+.update-container .create-form .company-feedback .star-rating-container .star-label {
+  margin-right: 20px;
+  border: 1px solid green;
+}
+
+.update-container .create-form .company-feedback .star-rating-container .star-rating {
+  border: 1px solid blue;
+  height: 40px;
+}
+
+.update-container .create-form .company-feedback .star-rating-container .star-rating fieldset {
+  padding: 0px;
+}
+
+.update-container .create-form .company-feedback .star-rating-container .star-rating fieldset label {
+  margin-right: 10px;
+  margin-top: -5px;
+  font-size: 18px;
+}
+
+.update-container .create-form .company-feedback h5 {
+  margin-left: 40px;
+}
+
+.update-container .create-form .comments-label {
+  margin-left: 35px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.update-container .create-form .comments-area {
+  margin: 20px 20px 5px 20px;
+  width: 850px;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.update-container .create-form .submit-btn .privacy-check {
+  margin-left: 30px;
+}
+
+.update-container .create-form .submit-btn .privacy-check input {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.update-container .create-form .submit-btn .privacy-check label {
+  font-size: 14px;
+}
+
+.update-container .create-form .submit-btn #create-btn {
+  margin: 30px;
+  width: 150px;
+  padding: 8px;
+  background-color: #adebad;
+  border: 1px solid #adebad;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.update-container .create-form .submit-btn #create-btn:hover {
+  border: 1px solid #98d698;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 /*# sourceMappingURL=updatecompany.css.map */

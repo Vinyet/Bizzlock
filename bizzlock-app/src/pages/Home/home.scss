@@ -1,20 +1,16 @@
 .home-container {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap; /* cambiar por mediaquery */
   background-image: url('https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80');
   background-size: cover;
   background-repeat: no-repeat;
-
-  /* JOBSEEKER AND EMPLOYEE COMPONENTS */ 
   .jobseeker-container, .employee-container {
     box-shadow: 0 5px 25px rgba(0,0,0,0.5);
     margin: 80px auto;
     padding: 30px;
-    width: 360px;
-    height: 420px;
+    width: 380px;
+    height: 450px;
     background-color: rgba(15,76,117,0.9);
-    color: #000;
     border: none;
     img {
       width: 80px;
@@ -24,38 +20,36 @@
     p {
       line-height: 25px;
       margin-top: 40px;
-      font-size: 16px;
       text-align: center;
+      color: #fff;
+    }
+    .MuiFormLabel-root {
+      color: #fff;
+    }
+    .MuiInputBase-root {
       color: #fff;
     }
     button {
       background-color: #fff;
       color: #000;
-      border-radius: 1px;
       border-radius: 2px;
-      border: none;
       padding: 8px;
       margin-left: 1px;
-      margin-top: 10px;
+      margin-top: 25px;
       width: 100%;
-      font-size: 16px;
-      opacity: 0.8;
+      height: 40px;
       cursor: pointer;
       &:hover {
-        -webkit-box-shadow:inset 0px 0px 0px 1px #3282b8;
-        -moz-box-shadow:inset 0px 0px 0px 1px #3282b8;
         box-shadow:inset 0px 0px 0px 1px #51a2d8;
-        opacity: 1;
-        transition-duration: 0.4s;
+        transition-duration: 0.3s;
       }
     }
     #employee-btn {
-      margin-top: 140px;
+      margin-top: 170px;
     }
   }
 } 
 
-/* HOW IT WORKS */
 .how-it-works-section {
   text-align: center;
   display: flex;

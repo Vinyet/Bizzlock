@@ -2,31 +2,28 @@
   width: 100%;
   margin: 130px auto;
   .form-box {
-    border-radius: 5px;
-    padding: 20px;
     form {
       display: flex;
       flex-direction: column;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.3);
       border: 1px solid lightgray;
-      border-radius: 5px;
+      border-radius: 1px;
       width: 400px;
       height: fit-content;
-      padding: 20px;
+      padding: 20px 10px;
       h3 {
         margin-top: 20px;
         margin-bottom: 30px;
-        font-size: 20px;
-        font-weight: 400;
+        font-size: 22px;
         text-align: center;
       }
       input {
-        margin-left: 45px;
+        margin-left: 30px;
         padding: 15px;
-        border-radius: 2px;
+        border-radius: 1px;
         border: 1px solid lightgray;
         outline: none;
-        width: 320px;
+        width: 340px;
         &:focus {
           border: 1px solid #bbe1fa;
         }
@@ -42,9 +39,9 @@
         }
       }
       .privacy-check {
-        margin-left: 40px;
+        margin-left: 30px;
         #check-privacy {
-          width: 25px;
+          width: 20px;
           margin: 30px auto;
           cursor: pointer;
         }
@@ -72,10 +69,9 @@
         }
       }
       .company-results {
-        margin-left: 45px;
-        max-width: 318px;
+        margin-left: 30px;
+        max-width: 339px;
         height: fit-content;
-        border: 1px solid $primary-color;
         li {
           font-size: 14px;
           background-color: #fff;

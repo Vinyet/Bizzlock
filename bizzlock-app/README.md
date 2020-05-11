@@ -10,12 +10,19 @@ Bizzlock is a web app project (... 1-3 lines). Breve descripción.
 
 ### Structure
 
+- Basic explanation of how it goes, both for Employee and JobSeeker
 - Diagramas de componentes
 - Modelo de datos
-- Capturas de pantalla de testing
-- Links al proyecto desplegado en Firebase
+- Capturas de pantalla de testing (?)
 
-### Uso
+### Technologies used
+
+Languages: JavaScript, React.JS, CSS3, Sass, HTML5
+Server: Firebase
+API: Google Knowledge Graph Search
+Testing: Jest
+
+### Usage
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

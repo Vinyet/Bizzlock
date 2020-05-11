@@ -61,7 +61,7 @@
   background-color: #F4F5F2;
   /* SIDEBAR */
   .listing-sidebar {
-    background-color: lightgray;
+    background-color: #fff;
     top: 0;
     left: 0;
     bottom: 0;
@@ -69,6 +69,12 @@
     flex: 1;
     padding: 0px 30px;
     width: 350px;
+    .predeterminado {
+      color: $secondary-color;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-bottom: -10px;
+    }
     p {
       font-size: 14px;
     }
@@ -133,7 +139,7 @@
   /* RESULTS BOX */
   .listing-results {
     margin-left: 50px;
-    padding: 0px 50px;
+    padding: 0px 50px 80px 0px;
     .results-box {
       margin-top: 50px;
       flex: 4;
@@ -166,7 +172,7 @@
           transition-duration: 0.5s;
         }
         .company-photo img { 
-          width: 75px;
+          width: 180px;
           margin-top: 20px;
           height: auto;
         }
@@ -176,7 +182,7 @@
             font-size: 20px;
           }
           p {
-            font-size: 16px;
+            font-size: 14px;
           }
         }
       }

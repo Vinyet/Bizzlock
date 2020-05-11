@@ -74,7 +74,6 @@ const SignUp = () => {
 
     const handleInputSelector = (e) => {
         const pickedCompanyId = e.target.id;
-        const pickedCompanyName = e.target.getAttribute('name')
         if (companies && !newCompanyGoogle) {
             const getChosenCompany = companies.filter((company) => {
                 return company.id === pickedCompanyId;
@@ -101,15 +100,15 @@ const SignUp = () => {
             setPrivacyErrorMessage(true);
         } else if (newCompanyGoogle) {
             register();
-            history.push('/create-company', newCompanyGoogle)
+            history.push('/create-company', newCompanyGoogle);
         } else if (companies) {
             register();
-            history.push('/update-company', chosenCompany)
+            history.push('/update-company', chosenCompany);
         } 
     }
 
     function showLink() { 
-        if (inputCompany.length < 3 && companies || newCompanyGoogle) {
+        if ((inputCompany.length < 3 && companies) || newCompanyGoogle) {
             return false;
         } else {
             return <p onClick={() => history.push('/create-company', newCompany)}>&apos;{newCompany}&apos; has not been registered yet. Create it here!</p>
@@ -120,7 +119,7 @@ const SignUp = () => {
         <div id="signup-container">
             <animated.div style={fadeIn} className="form-box">
                 <form action=""> 
-                    <h3>What is your company&apos;s name?</h3>
+                    <h3>What is the company&apos;s name?</h3>
                     <div>
                         <input type="search" placeholder="Enter a company" value={inputCompany} onChange={handleInput}>{}</input>
                             {(result) ? 
@@ -147,6 +146,5 @@ const SignUp = () => {
         </div>
     )
 }
-
 
 export default SignUp;

@@ -1,91 +1,85 @@
 .update-container {
-    margin-top: -25px;
-    background-color: #f5f5f5;
-    height: 100%;
-    padding-bottom: 80px;
-    h2 {
-      padding-top: 40px;
-      text-align: center;
-      span {
-        text-transform: capitalize;
-      }
+  margin-top: -25px;
+  background-color: #f5f5f5;
+  padding-bottom: 80px;
+  h2 {
+    padding-top: 40px;
+    text-align: center;
+    span {
+      text-transform: capitalize;
     }
-    .text-above {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 40px;
+  }
+  .text-above {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+  .create-form {
+    padding: 10px 50px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 50%;
+    margin: auto;
+    label {
+      font-size: 16px;
     }
-    .create-form {
-      padding: 10px 50px;
-      background-color: #fff;
-      border-radius: 5px;
-      border: 1px solid lightgray;
-      width: 50%;
-      margin: auto;
-      label {
-        font-size: 18px;
-      }
-      .company-feedback {
-        margin-top: 40px;
-        .star-rating-container {
-          display: flex;
-          justify-content: end;
-          margin-bottom: 10px;
-          border: 1px solid white;
-          .star-label {
-            border: 1px solid white;
-          }
-          .star-rating {
-            border: 1px solid white;
-            fieldset {
-              border: 1px solid white;
-              padding: 10px;
-              font-size: 20px;
-            }
-          }
-        }
-        h5 {
-          margin-left: 40px;
-        }
-      }
-      .comments-label {
-        margin-left: 35px;
-        margin-top: 50px;
-        display: inline-block;
-      }
-      .comments-area {
-        margin: 20px 20px 5px 20px;
-        width: 850px;
-        height: 150px;
-        padding: 10px;
+    .company-feedback {
+      margin-top: 40px;
+      .star-rating-container {
+        display: flex;
+        justify-content: end;
+        height: 40px;
         border: 1px solid #fff;
-      }
-      .submit-btn {
-        .privacy-check {
-          margin-left: 30px;
-          input {
-            width: 15px;
-            height: 15px;
-            margin-right: 10px;
-            vertical-align: middle;
-          }
-          label {         
-            font-size: 14px;
-          }
+        .star-label {
+          height: 20px;
+          border: 1px solid #fff;
         }
-        #create-btn {
-          margin: 30px;
-          width: 150px;
-          padding: 8px;
-          background-color: rgb(173, 235, 173);
-          border: 1px solid rgb(173, 235, 173);
-          font-size: 16px;
-          cursor: pointer;
-          &:hover {
-            border: 1px solid rgb(152, 214, 152);
-            transition-duration: 0.3s;
-          }
+        .star-rating {
+          border: 1px solid #fff;
+        }
+      }
+      h5 {
+        margin-left: 40px;
+      }
+    }
+    .comments-label {
+      margin-left: 35px;
+      margin-top: 50px;
+      display: inline-block;
+    }
+    .comments-area {
+      margin: 20px 20px 5px 20px;
+      width: 850px;
+      height: 150px;
+      padding: 10px;
+      border: 1px solid #fff;
+    }
+    .submit-btn {
+      .privacy-check {
+        margin-left: 30px;
+        input {
+          width: 15px;
+          height: 15px;
+          margin-right: 10px;
+          vertical-align: middle;
+        }
+        label {         
+          font-size: 14px;
+        }
+      }
+      #create-btn {
+        margin: 30px;
+        width: 150px;
+        padding: 8px;
+        background-color: rgb(173, 235, 173);
+        border: 1px solid rgb(173, 235, 173);
+        font-size: 16px;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid rgb(152, 214, 152);
+          transition-duration: 0.3s;
         }
       }
     }
   }
+}

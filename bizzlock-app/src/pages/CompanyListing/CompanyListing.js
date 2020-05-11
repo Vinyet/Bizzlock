@@ -14,32 +14,17 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltO
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 
 const customIcons = {
-    1: {
-      icon: <SentimentVeryDissatisfiedIcon />,
-      label: 'Very Dissatisfied',
-    },
-    2: {
-      icon: <SentimentDissatisfiedIcon />,
-      label: 'Dissatisfied',
-    },
-    3: {
-      icon: <SentimentSatisfiedIcon />,
-      label: 'Neutral',
-    },
-    4: {
-      icon: <SentimentSatisfiedAltIcon />,
-      label: 'Satisfied',
-    },
-    5: {
-      icon: <SentimentVerySatisfiedIcon />,
-      label: 'Very Satisfied',
-    },
-  };
+    1: { icon: <SentimentVeryDissatisfiedIcon />, label: 'Very Dissatisfied' },
+    2: { icon: <SentimentDissatisfiedIcon />, label: 'Dissatisfied' },
+    3: { icon: <SentimentSatisfiedIcon />, label: 'Neutral' },
+    4: { icon: <SentimentSatisfiedAltIcon />, label: 'Satisfied' },
+    5: { icon: <SentimentVerySatisfiedIcon />, label: 'Very Satisfied' },
+};
   
-  function IconContainer(props) {
+function IconContainer(props) {
     const { value, ...other } = props;
     return <span {...other}>{customIcons[value].icon}</span>;
-  }
+}
 
   const cities = [
     { title: 'Álava' },
@@ -143,23 +128,34 @@ const CompanyListing = props => {
         }
     }, [companies])
 
-    useEffect(() => {
-        if (filters) {
-            setLoading(true);
-            const searchMatches = companies.filter((company) => {
-                // COMPLETAR
-                const matches = (company.location.toLowerCase() === filters.location.toLowerCase())
-                return matches
-            })
-            searchMatches.length ? setMatches(searchMatches) : setMatches([]);
-        }
-    }, [filters])
 
     const getCompanyList = () => {
-
-        if (filters) {}
-
-        if (companies && companies.length && matches && !matches.length && searchMatches && !searchMatches.length) {
+        if (filters) {
+            return companies.map(company => {
+                let salaryMatch = [];
+                if (company.salary === salary || company.overallRating === rating || company.location === filterLocation || company.industry === filterIndustry) {
+                    salaryMatch.push(company);
+                    return salaryMatch.map((match) => {
+                        return (
+                            <animated.div style={extraFadeIn} className="results-box" key={match.id}>
+                                <animated.div style={extraFadeIn} className="company-result-single" onClick={() => setShowDetails(match.name)}>
+                                    <div key={match.id} className="company-photo">
+                                        {(match.image) ? <img src={`${match.image}`} alt='company'></img> : <img src="" alt="no-image"></img>}
+                                    </div>    
+                                    <div className="company-info">
+                                        <h2>{match.name}</h2>
+                                        <small>{match.industry}</small>
+                                        <p>Salary rating: {match.salary}/5</p>
+                                        <p>Employee overall rating: {match.overallRating}/5</p>
+                                    {(match.description) ? <p>{match.description}</p> : null}
+                                    </div>
+                                </animated.div>
+                            </animated.div>
+                        )
+                    })
+                }
+            })       
+        } else if (companies && companies.length && matches && !matches.length && searchMatches && !searchMatches.length) {
             return (
                 <animated.div style={extraFadeIn} className="results-box">
                     <div className="company-result-single" id="no-results-box">
@@ -178,7 +174,9 @@ const CompanyListing = props => {
                             </div>    
                             <div className="company-info">
                                 <h2>{match.name}</h2>
-                                <p>{match.industry}</p>
+                                <p><small>{match.industry}</small></p>
+                                <p>Salary rating: {match.salary}/5</p>
+                                <p>Employee overall rating: {match.overallRating}/5</p>
                                 {(match.description) ? <p>{match.description}</p> : null}
                             </div>
                         </animated.div>
@@ -221,11 +219,11 @@ const CompanyListing = props => {
     const handleJobPerks = (e) => {
         const perkName = e.target.name;
         getPerkIndex(perkName); 
-        setPerks([
-            ...perks,
-            { perkId: perkName }
-        ])
+        setPerks([ ...perks, { perkId: perkName }])
     } 
+
+    const handleFilters = () => { setFilters(true) }
+    const turnOffFilters = () => { setFilters(false) }
 
     const CompanyDetails = ({ id }) => {
         return ( 
@@ -235,20 +233,14 @@ const CompanyListing = props => {
         )
     }
 
-    const handleFilters = () => {
-        setFilters(true);
-    }
-
     const handleOrder = (e) => {
         const choice = e.target.value;
         switch (choice) {
-            case 'Most relevant':
-            break;
-            case 'Closest to me':
-            break;
             case 'Best rated':
+            const bestRated = companies.sort((a, b) => parseFloat(a.overallRating) - parseFloat(b.overallRating));
             break;
             case 'Worst rated':
+            const worstRated = companies.sort((a, b) => parseFloat(b.overallRating) - parseFloat(a.overallRating));
             break;
         }
     }
@@ -261,14 +253,16 @@ const CompanyListing = props => {
             <input type="search" autoFocus id="listing-search" onChange={handleSearch} placeholder="Search" />
             <select onChange={handleOrder}>
                 <option>Most relevant</option>
-                <option>Closest to me</option>
                 <option>Best rated</option>
                 <option>Worst rated</option>
             </select>
         </div>
 
         <animated.div style={extraFadeIn} className="listing-container">
-            <animated.div className="listing-sidebar">
+            <div className="listing-sidebar">
+
+                {(filters) ? <p className="predeterminado" onClick={turnOffFilters}>Restablecer valores predeterminados</p> : null}
+
                 <h4 style={{display: 'inline-block', marginRight: '15px'}}>Salary</h4>
                 <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating name="customized-icons" getLabelText={(value) => customIcons[value].label} IconContainerComponent={IconContainer} onChange={(event, newValue) => {setSalary(newValue)}}/>
@@ -306,7 +300,7 @@ const CompanyListing = props => {
                 <div className="btn-box">
                     <button onClick={handleFilters}>FILTER</button>
                 </div>
-            </animated.div>
+            </div>
             <animated.div style={extraFadeIn} className="listing-results">
                 {(showDetails) ? <CompanyDetails id={showDetails} /> : getCompanyList() }
             </animated.div>
@@ -314,6 +308,5 @@ const CompanyListing = props => {
         </>
     )
 }
-
  
 export default CompanyListing;

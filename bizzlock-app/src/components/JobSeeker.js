@@ -81,7 +81,7 @@ const JobSeeker = () => {
             <p>I&apos;m looking for a job and I want to read about other people&apos;s experiences</p>
             <div className="jobseeker-select">
             <Autocomplete id="free-solo-demo" freeSolo options={cities.map((option) => option.title)} onChange={(event, newValue) => {setCity(newValue)}} renderInput={(params) => (
-                <TextField {...params} label="Localización" margin="normal" variant="outlined" />
+                <TextField {...params} label="Location" margin="normal" variant="outlined" />
             )}/>
             <Autocomplete id="free-solo-demo" freeSolo options={industries.map((option) => option.title)} onChange={(event, newValue) => {setIndustry(newValue)}} renderInput={(params) => (
                 <TextField {...params} label="Industry" margin="normal" variant="outlined" />

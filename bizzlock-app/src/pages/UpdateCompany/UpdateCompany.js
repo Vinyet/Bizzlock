@@ -77,7 +77,6 @@ const UpdateCompany = props => {
         //postCompany(form, userseWhoRated);   POST OR UPDATE?? 
     }
 
-
     return (
         <animated.div style={fadeIn} className="update-container">
             <h2>Give your feedback on {loc.state.name}</h2>

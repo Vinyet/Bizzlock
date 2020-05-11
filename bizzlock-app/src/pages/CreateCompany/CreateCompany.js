@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getCurrentUser } from '../../services/auth';
-import { postCompany, createUser, getUsers } from '../../services/data';
+import { postCompany, createUser, getUsers, updateUser } from '../../services/data';
 import { register } from '../../services/auth';
 import { getPerkIndex } from '../../logic/jobperks';
 import CommentCreator from '../../components/Comments/CommentCreator';
@@ -98,7 +98,6 @@ const CreateCompany = props => {
     const [ successMessage, setSuccessMessage ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState(false);
     const [ checked, setChecked ] = useState(false);
-    const [ user, setUser ] = useState();
     const [ firebaseUserData, setFirebaseUserData ] = useState([]);
 
     useEffect(() => {
@@ -129,15 +128,12 @@ const CreateCompany = props => {
     const handleJobPerks = (e) => {
         const perkName = e.target.name;
         getPerkIndex(perkName);
-        setPerks([
-            ...perks,
-            { perkId: perkName }
-        ])
-    } 
+        setPerks([...perks, { perkId: perkName }])
+    }
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        if (!googleCompany && !checked) {
+        if (!checked) {
             setErrorMessage(true);
             setSuccessMessage(false);
         }
@@ -146,26 +142,26 @@ const CreateCompany = props => {
                 name: newCompanyName,
                 location,
                 industry,
+                website,
                 jobPerks: perks,
                 workLife,
                 salary,
                 overallRating,
                 comments: comment
             }
-            if (website) { form.website(googleCompany.website) }       
             const user = getCurrentUser();
-            const usersWhoRated = 1;
-            setUser(user);
-            console.log('user for new: ', user)          
+            console.log('new current user to create: ', user)    
             firebaseUserData.filter(firebaseUser => {
                 if (firebaseUser.uid !== user.uid) {
-                    const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] }
+                    console.log('this user has not been registered')
+                    const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] };
                     createUser(newUser);
-                    postCompany(form, usersWhoRated)
+                    postCompany(form, { usersWhoRated: 1 });
                 } else {
-                    const sameUser = firebaseUser.uid === user.uid;
-                    sameUser.ratedCompanies.push(newCompanyName)
-                    postCompany(form, usersWhoRated)
+                    console.log('this user has already been registered')
+                    const existingUser = firebaseUser;
+                    existingUser.ratedCompanies.push(newCompanyName)
+                    postCompany(form, { usersWhoRated: 1 });
                 }
             })     
             setErrorMessage(false);
@@ -176,6 +172,7 @@ const CreateCompany = props => {
                 description: googleCompany.description,
                 industry,
                 location,
+                website,
                 jobPerks: perks,
                 workLife,
                 salary,
@@ -183,10 +180,8 @@ const CreateCompany = props => {
                 image: googleCompany.image.contentUrl,
                 comments: comment
             }     
-            if (website) { form.website(googleCompany.website) }       
             const user = getCurrentUser();
             const usersWhoRated = 1;
-            setUser(user);    
             console.log('user for google: ', user)          
             firebaseUserData.filter((firebaseUser) => {
                 if (firebaseUser.uid === user.uid) {
@@ -196,7 +191,7 @@ const CreateCompany = props => {
                 } else if (firebaseUser.uid !== user.uid) {
                     const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] }
                     createUser(newUser);
-                    //postCompany(form, usersWhoRated)
+                    postCompany(form, usersWhoRated)
                 }
             })         
         }
@@ -249,7 +244,7 @@ const CreateCompany = props => {
                                 </div>
                             </div> 
                             <div className="website-box">
-                                <label htmlFor="website-input">WEBSITE (optional)</label><br/>
+                                <label htmlFor="website-input">WEBSITE</label><br/>
                                 <input type='text' id='website-input' name='website' onChange={(e) => setWebsite(e.target.value)}></input>
                             </div>
                             </>

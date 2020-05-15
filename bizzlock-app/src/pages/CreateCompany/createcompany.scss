@@ -1,14 +1,16 @@
 .create-company-form {
-  margin-top: -25px;
   background-color: #f5f5f5;
   height: 100%;
   padding-bottom: 80px;
   h2 {
-    padding-top: 40px;
+    padding-top: 50px;
     text-align: center;
     span {
       text-transform: capitalize;
     }
+  }
+  label {
+    font-size: 16px;
   }
   .text-above {
     text-align: center;
@@ -17,36 +19,42 @@
   }
   form {
     padding: 50px;
+    margin-top: 50px;
     background-color: #fff;
-    margin: auto;
+    width: 60%;
     box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-    label {
-      font-size: 18px;
-    }
-    .company-information {
+    .company-cover {
+      display: flex; 
+      justify-content: space-between;
+      margin-bottom: 50px;
       .top-description-photo {
-        display: flex; 
-        justify-content: space-between;
-        margin-bottom: 20px;
+        flex: 1;
+        img {
+          max-width: 300px;
+        }
         .company-description {
           flex: 4;
-          font-size: 16px;
-          margin-left: 20px;
+          font-size: 14px;
+          margin-left: 40px;
           padding: 5px;
           line-height: 25px;
         }
-        img {
-          flex: 1;
-        }
       }
-      .top-location-industry {
+    }
+    .company-information {
+      .top-information {
         display: flex;
-        justify-content: flex-end;
-        label {
-          font-size: 14px;
-        }
+        justify-content: space-around;
         .MuiInputBase-root {
-          width: 320px;
+          width: 400px;
+        }
+        .top-location {
+          display: flex;
+          flex-direction: column;
+        .top-industry {
+          display: flex;
+          flex-direction: column;
+        }
         }
       }
       .information-selects {
@@ -56,20 +64,25 @@
         padding: 10px;
       }
       .website-box {
-        label {
+        #website-input {
+          padding: 5px 20px;
+          margin-top: 15px;
           margin-left: 10px;
+          width: 290px;
+          border-radius: 5px;
+          height: 45px;
+          border: 1px solid lightgray;
+          font-size: 20px;
         }
       } 
-      .MuiFormControl-fullWidth {
-        width: 330px;
-      }
     }
     .perks-flex {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      margin-bottom: 30px;
       p {
         display: inline-block;
-        margin-left: 15px;
+        margin-left: 20px;
       }
       .perks-check {
         cursor: pointer;
@@ -118,7 +131,8 @@
         display: flex;
         margin-left: 40px;
         .star-label {
-          margin-right: 20px;
+          margin-right: 10px;
+          font-size: 16px;
         }
         .star-rating {
           height: 40px;
@@ -126,11 +140,12 @@
             padding: 10px;
             margin-top: -15px;
             font-size: 20px;
+            .MuiRating-label {
+              font-size: 26px;
+              margin-right: 5px;
+            }
           }
         }
-      }
-      h5 {
-        margin-left: 40px;
       }
     }
     .comments-label {
@@ -140,8 +155,9 @@
     }
     .comments-area {
       margin-top: 10px;
-      padding: 10px;
-      border: 1px solid #fff;
+      margin-left: 20px;
+      border-radius: 3px;
+      padding: 12px;
     }
     .submit-btns {
       .privacy-check {
@@ -175,9 +191,15 @@
       button {
         padding: 10px;
         border: 1px solid #fff;
-        width: 100px;
-        background-color: lightgray;
-        margin-left: 30px;
+        width: 120px;
+        background-color: #f5f5f5;
+        margin-left: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid lightgray;
+          transition-duration: 0.3s;
+        }
       }
       .MuiAlert-outlinedSucess {
         width: 83%;

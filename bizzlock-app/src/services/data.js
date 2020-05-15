@@ -52,13 +52,16 @@ async function createUser(newUser) {
     const result = await db.collection('users').add(newUser);
 }
 
-
 // UPDATE USER 
-async function updateUser(existingUser) {
+async function updateUser({id, ...existingUser}) {
     const db = _getDBConnection();
-    const result = await db.collection('users').doc(existingUser.uid).set(existingUser, {merge: true})
-    //const result = await db.collection('users').doc(existingUser.uid).update({ratedCompanies: newCompanyName})
+    const result = await db.collection('users').doc(id).set(existingUser, {merge: true})
 }
 
+// UPDATE COMPANY
+async function updateCompany(existingCompany) {
+    const db = _getDBConnection();
+    const result = await db.collection('companies').doc(existingCompany.id).set(existingCompany, {merge: true})
+}
 
-export { getCompanies, getUsers, postCompany, createUser, updateUser }
+export { getCompanies, getUsers, postCompany, createUser, updateUser, updateCompany }

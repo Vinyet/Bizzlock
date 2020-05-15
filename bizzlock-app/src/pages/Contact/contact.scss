@@ -1,9 +1,10 @@
 .contact-container {
-    max-width: 40%;
-    margin: 80px auto;
+    max-width: 30%;
+    margin: 100px auto;
     background-color: #fff;
     padding: 20px 50px;
-    border-radius: 5px;
+    border-radius: 2px;
+    box-shadow: $box-shadow;
     form {
         display: flex;
         flex-direction: column;
@@ -12,13 +13,14 @@
             flex-direction: column;
             padding: 10px;
             label {
-                font-size: 14px;
+                font-size: 16px;
             }
             input {
                 margin-top: 10px;
-                max-width: 400px;
+                max-width: 350px;
+                height: 30px;
                 border: 1px solid lightgray;
-                padding: 8px;
+                padding: 8px 15px;
                 outline: none;
                 border-radius: 2px;
                 overflow: hidden;
@@ -34,9 +36,9 @@
             border: 1px solid lightgray;
             padding: 15px;
             width: 500px;
-            height: 100px;
+            height: 150px;
             resize: none;
-            max-width: 50%;
+            max-width: 700px;
             outline: none;
             &:hover {
                 border: 1px solid lightblue;
@@ -48,15 +50,16 @@
             margin-left: 10px;
             margin-bottom: 20px;
             font-size: 16px;
-            border: 1px solid gray;
+            border: 1px solid $primary-color;
             border-radius: 2px;
-            width: 150px;
+            width: 160px;
             cursor: pointer;
             padding: 10px;
             background-color: #fff;
             &:hover {
-                background-color: lightblue;
-                transition-duration: 0.5s;
+                letter-spacing: 3px;
+                background-color: $primary-color;
+                transition-duration: 0.3s;
             }
         }
     }

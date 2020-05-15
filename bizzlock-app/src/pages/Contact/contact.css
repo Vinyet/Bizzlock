@@ -1,12 +1,86 @@
 .contact-container {
-  border: 1px solid red;
-}
-
-.contact-container h2 {
-  color: red;
+  max-width: 40%;
+  margin: 80px auto;
+  background-color: #fff;
+  padding: 20px 50px;
+  border-radius: 5px;
 }
 
 .contact-container form {
-  border: 1px solid blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.contact-container form .contact-name, .contact-container form .contact-subject {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.contact-container form .contact-name label, .contact-container form .contact-subject label {
+  font-size: 14px;
+}
+
+.contact-container form .contact-name input, .contact-container form .contact-subject input {
+  margin-top: 10px;
+  max-width: 400px;
+  border: 1px solid lightgray;
+  padding: 8px;
+  outline: none;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.contact-container form .contact-name input:hover, .contact-container form .contact-subject input:hover {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.contact-container form textarea {
+  margin-top: 20px;
+  margin-left: 10px;
+  border: 1px solid lightgray;
+  padding: 15px;
+  width: 500px;
+  height: 100px;
+  resize: none;
+  max-width: 50%;
+  outline: none;
+}
+
+.contact-container form textarea:hover {
+  border: 1px solid lightblue;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.contact-container form button {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  width: 150px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.contact-container form button:hover {
+  background-color: lightblue;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
 }
 /*# sourceMappingURL=contact.css.map */

@@ -5,9 +5,9 @@
 /* PAGES */ 
 @import './pages/Home/home.scss';
 @import './pages/SignUp/signup.scss';
-@import './pages/CompanyListing/companylisting.scss';
 @import './pages/CreateCompany/createcompany.scss';
 @import './pages/UpdateCompany/updatecompany.scss';
+@import './pages/CompanyListing/companyListing.scss';
 @import './pages/About/about.scss';
 @import './pages/Contact/contact.scss';
 
@@ -15,4 +15,3 @@
 @import './components/Header/header.scss';
 @import './components/Footer/footer.scss';
 @import './components/Comments/comments.scss';
-@import './components/CompanyDetails/companydetails.scss';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { getCompanies } from '../../services/data';
 import { getPerkIndex } from '../../logic/jobperks';
@@ -96,7 +96,8 @@ const industries = [
 
 const CompanyListing = props => {
     let { location, industry } = useParams(); 
-    const extraFadeIn = useSpring({opacity: 2, from: {opacity: 0}});
+    const history = useHistory();
+    const extraFadeIn = useSpring({opacity: 5, from: {opacity: 0}});
     const [ loading, setLoading ] = useState(true);
     const [ companies, setCompanies ] = useState([]);
     const [ showDetails, setShowDetails ] = useState(false);
@@ -108,6 +109,8 @@ const CompanyListing = props => {
     const [ filterLocation, setFilterLocation ] = useState('');
     const [ filterIndustry, setFilterIndustry ] = useState();
     const [ searchMatches, setSearchMatches ] = useState([]);
+    const [ bestRated, setBestRated ] = useState(false);
+    const [ worstRated, setWorstRated ] = useState(false);
 
     useEffect(() => {
         const fetchCompanies = async () => {
@@ -138,16 +141,13 @@ const CompanyListing = props => {
                     return salaryMatch.map((match) => {
                         return (
                             <animated.div style={extraFadeIn} className="results-box" key={match.id}>
-                                <animated.div style={extraFadeIn} className="company-result-single" onClick={() => setShowDetails(match.name)}>
+                                <animated.div style={extraFadeIn} className="company-result-single">
                                     <div key={match.id} className="company-photo">
                                         {(match.image) ? <img src={`${match.image}`} alt='company'></img> : <img src="" alt="no-image"></img>}
                                     </div>    
                                     <div className="company-info">
-                                        <h2>{match.name}</h2>
-                                        <small>{match.industry}</small>
-                                        <p>Salary rating: {match.salary}/5</p>
-                                        <p>Employee overall rating: {match.overallRating}/5</p>
-                                    {(match.description) ? <p>{match.description}</p> : null}
+                                        <p className="link-to-details" onClick={() => setShowDetails(match)}>{match.name}</p>                               <small>{match.industry}</small>
+                                        {(match.description) ? <p>{match.description}</p> : null}
                                     </div>
                                 </animated.div>
                             </animated.div>
@@ -166,17 +166,17 @@ const CompanyListing = props => {
             )
         } else if (companies && companies.length && matches && matches.length && searchMatches && !searchMatches.length) {
             return matches.map((match) => {
+                if (worstRated) {matches.sort((a, b) => parseFloat(a.overallRating) - parseFloat(b.overallRating));}
+                if (bestRated) {matches.sort((a, b) => parseFloat(b.overallRating) - parseFloat(a.overallRating))} 
                 return (
                     <animated.div style={extraFadeIn} className="results-box" key={match.id}>
-                        <animated.div style={extraFadeIn} className="company-result-single" onClick={() => setShowDetails(match.name)}>
+                        <animated.div style={extraFadeIn} className="company-result-single" >
                             <div key={match.id} className="company-photo">
                                 {(match.image) ? <img src={`${match.image}`} alt='company'></img> : <img src="" alt="no-image"></img>}
                             </div>    
                             <div className="company-info">
-                                <h2>{match.name}</h2>
-                                <p><small>{match.industry}</small></p>
-                                <p>Salary rating: {match.salary}/5</p>
-                                <p>Employee overall rating: {match.overallRating}/5</p>
+                            <p className="link-to-details" onClick={() => setShowDetails(match)}>{match.name}</p>
+                                <small>{match.industry}</small>
                                 {(match.description) ? <p>{match.description}</p> : null}
                             </div>
                         </animated.div>
@@ -187,13 +187,12 @@ const CompanyListing = props => {
                 return searchMatches.map((searchMatch) => {
                     return (
                         <animated.div style={extraFadeIn} className="results-box" key={searchMatch.id}>
-                            <div className="company-result-single" onClick={() => setShowDetails(searchMatch.name)}>
+                            <div className="company-result-single">
                                 <div key={searchMatch.id} className="company-photo">
                                     {(searchMatch.image) ? <img src={`${searchMatch.image}`} alt='company'></img> : <img src="" alt="no-image"></img>}
                                 </div>    
                                 <div className="company-info">
-                                    <h2>{searchMatch.name}</h2>
-                                    <p>{searchMatch.industry}</p>
+                                    <p className="link-to-details" onClick={() => setShowDetails(searchMatch)}>{searchMatch.name}</p>                                    <p>{searchMatch.industry}</p>
                                     {(searchMatch.description) ? <p>{searchMatch.description}</p> : null}
                                 </div>
                             </div>
@@ -225,11 +224,52 @@ const CompanyListing = props => {
     const handleFilters = () => { setFilters(true) }
     const turnOffFilters = () => { setFilters(false) }
 
-    const CompanyDetails = ({ id }) => {
+
+    const CompanyDetails = ({ details }) => {
+        console.log('details object: ', details)
         return ( 
-            <div className="company-details">
-                <h5>{id}</h5>
-            </div>
+                <>
+                <h5 id="back-arrow" onClick={() => setShowDetails(false)}>⟵ GO BACK</h5>
+                <animated.div style={extraFadeIn} className="company-details">
+                    <div key={details.id} className='details-company-cover'>
+                        <div className="company-detail-photo">
+                            {(details.image) ? <img src={`${details.image}`} alt='company'></img> : null}
+                        </div>    
+                        <div className="company-detail-info">
+                            <h2>{details.name}</h2><br/>
+                            <p id='detail-sector'><strong>Sector:</strong> {details.industry}</p>
+                            {(details.website) ? <a href="{details.website}">Visit website</a> : null}
+                            {(details.description) ? <p id="detail-description">{details.description}</p> : null}
+                        </div>    
+                    </div>    
+                    <h5>JOB PERKS</h5>
+                    {details.jobPerks.map(perk => {
+                        return (
+                            <><div className='perks-check'>&#10003;</div> <p className="perks-label">{perk.label}</p></>
+                        )
+                    })}
+                    <div className="feedback">
+                        <h5>EMPLOYEE FEEDBACK</h5>
+                        <p><strong>Salary rating</strong>: {((details.salary)/details.usersWhoRated).toFixed(1)}/5</p>
+                        <p><strong>Work/life balance</strong>: {((details.workLife)/details.usersWhoRated).toFixed(1)}/5</p>
+                        <p><strong>Employee overall rating</strong>: {((details.overallRating)/details.usersWhoRated).toFixed(1)}/5</p>
+                        <br/>
+                    <div className="comments-section">
+                        {(details.comments) ? 
+                            details.comments.map((comment) => {
+                                return <>
+                                    <div className="detail-comment-container">
+                                        <div id="comma">&#10077;</div>
+                                        <div id="comment-content">{comment}</div>
+                                    </div>
+                                    </>
+                            })
+                            :  
+                            <div id="no-comments">No comments yet</div>}
+                    </div>
+                    </div>
+            </animated.div>
+            </>
         )
     }
 
@@ -237,10 +277,12 @@ const CompanyListing = props => {
         const choice = e.target.value;
         switch (choice) {
             case 'Best rated':
-            const bestRated = companies.sort((a, b) => parseFloat(a.overallRating) - parseFloat(b.overallRating));
+            setBestRated(true);
+            setWorstRated(false);
             break;
             case 'Worst rated':
-            const worstRated = companies.sort((a, b) => parseFloat(b.overallRating) - parseFloat(a.overallRating));
+            setWorstRated(true);
+            setBestRated(false);
             break;
         }
     }
@@ -251,7 +293,7 @@ const CompanyListing = props => {
         <>
         <div className="listing-banner">
             <input type="search" autoFocus id="listing-search" onChange={handleSearch} placeholder="Search" />
-            <select onChange={handleOrder}>
+            <select id='sorting-select' onChange={handleOrder}>
                 <option>Most relevant</option>
                 <option>Best rated</option>
                 <option>Worst rated</option>
@@ -302,11 +344,12 @@ const CompanyListing = props => {
                 </div>
             </div>
             <animated.div style={extraFadeIn} className="listing-results">
-                {(showDetails) ? <CompanyDetails id={showDetails} /> : getCompanyList() }
+                {(showDetails) ? <CompanyDetails details={showDetails} /> : getCompanyList() }
             </animated.div>
         </animated.div>
         </>
     )
 }
  
+
 export default CompanyListing;

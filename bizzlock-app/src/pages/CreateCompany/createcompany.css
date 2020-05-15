@@ -16,14 +16,13 @@
 
 .create-company-form .text-above {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 40px;
 }
 
 .create-company-form form {
   padding: 50px;
   background-color: #fff;
-  width: 50%;
   margin: auto;
   -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
@@ -72,13 +71,8 @@
   font-size: 14px;
 }
 
-.create-company-form form .company-information .top-location-industry select {
-  background-color: #fff;
-  padding: 5px;
-  width: 200px;
-  margin-right: 25px;
-  cursor: pointer;
-  outline: none;
+.create-company-form form .company-information .top-location-industry .MuiInputBase-root {
+  width: 320px;
 }
 
 .create-company-form form .company-information .information-selects {
@@ -92,52 +86,12 @@
   padding: 10px;
 }
 
-.create-company-form form .company-information .information-selects select {
-  border: 1px solid #fff;
-  border-bottom: 1px solid lightgray;
-  background-color: #fff;
-  padding: 10px;
-  display: block;
-  width: 340px;
-  outline: none;
-  margin-top: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-image: url("https://image.flaticon.com/icons/svg/625/625946.svg");
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 310px;
-  background-size: 14px;
-}
-
-.create-company-form form .company-information .information-selects select:focus {
-  border: 1px solid lightblue;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-}
-
 .create-company-form form .company-information .website-box label {
   margin-left: 10px;
 }
 
-.create-company-form form .company-information .website-box #website-input {
-  margin-left: 10px;
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #fff;
-  border-bottom: 1px solid lightgray;
-  width: 300px;
-  outline: none;
-}
-
-.create-company-form form .company-information .website-box #website-input:focus {
-  border: 1px solid lightblue;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
+.create-company-form form .company-information .MuiFormControl-fullWidth {
+  width: 330px;
 }
 
 .create-company-form form .perks-flex {
@@ -217,13 +171,9 @@
 }
 
 .create-company-form form .company-feedback .star-rating-container .star-rating fieldset {
-  padding: 0px;
-}
-
-.create-company-form form .company-feedback .star-rating-container .star-rating fieldset label {
-  margin-right: 10px;
-  margin-top: -5px;
-  font-size: 18px;
+  padding: 10px;
+  margin-top: -15px;
+  font-size: 20px;
 }
 
 .create-company-form form .company-feedback h5 {
@@ -242,23 +192,23 @@
   border: 1px solid #fff;
 }
 
-.create-company-form form .submit-btn .privacy-check {
+.create-company-form form .submit-btns .privacy-check {
   padding: 10px;
   margin-left: 20px;
 }
 
-.create-company-form form .submit-btn .privacy-check input {
+.create-company-form form .submit-btns .privacy-check input {
   width: 15px;
   height: 15px;
   margin-right: 10px;
   vertical-align: middle;
 }
 
-.create-company-form form .submit-btn .privacy-check label {
+.create-company-form form .submit-btns .privacy-check label {
   font-size: 14px;
 }
 
-.create-company-form form .submit-btn #create-btn {
+.create-company-form form .submit-btns #create-btn {
   margin-left: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -270,9 +220,23 @@
   cursor: pointer;
 }
 
-.create-company-form form .submit-btn #create-btn:hover {
+.create-company-form form .submit-btns #create-btn:hover {
   border: 1px solid #98d698;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+}
+
+.create-company-form form .submit-btns button {
+  padding: 10px;
+  border: 1px solid #fff;
+  width: 100px;
+  background-color: lightgray;
+  margin-left: 30px;
+}
+
+.create-company-form form .submit-btns .MuiAlert-outlinedSucess {
+  width: 83%;
+  margin-top: 10%;
+  margin-left: 30px;
 }
 /*# sourceMappingURL=createcompany.css.map */

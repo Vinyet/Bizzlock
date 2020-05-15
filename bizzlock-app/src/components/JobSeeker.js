@@ -88,7 +88,7 @@ const JobSeeker = () => {
             )}/>
             </div>
             <Link to={`/company-listing/${location}/${industry}`}>
-            <button>SEARCH</button>
+            <button id="jobseeker-btn">SEARCH</button>
             </Link>
         </div>    
     )

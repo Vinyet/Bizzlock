@@ -1,17 +1,13 @@
 import React from 'react';
-//import { UserContext, userState } from '.../'; /* can't access it! */
-
-
-// how to insert header inside div. provider/consumer?
-// <UserContext.Provider value={userState.loggedout}>
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <header> 
             <a href="/"><img src="/test.png" alt="bizzlock-logo" className="logo"/></a>
             <div className="right-navigation">
-                <a href="/about">ABOUT</a>
-                <a href="/contact">CONTACT</a>
+                <Link to="/about">ABOUT</Link>
+                <Link to="/contact">CONTACT</Link>
             </div>
         </header>
     )

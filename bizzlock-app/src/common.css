@@ -41,6 +41,29 @@ html, body, #app, #app > div {
   min-height: 100vh;
 }
 
+.not-found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 130px;
+  padding: 10px;
+  text-align: center;
+}
+
+.not-found img {
+  width: 150px;
+  margin: auto;
+}
+
+.not-found h2 {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
 @-webkit-keyframes bouncing-loader {
   to {
     opacity: 0.1;

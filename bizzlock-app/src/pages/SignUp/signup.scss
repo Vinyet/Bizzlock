@@ -5,6 +5,7 @@
     form {
       display: flex;
       flex-direction: column;
+      margin: auto;
       box-shadow: 0 5px 25px rgba(0,0,0,0.3);
       border: 1px solid lightgray;
       border-radius: 1px;
@@ -69,14 +70,14 @@
         }
       }
       .company-results {
-        margin-left: 30px;
-        max-width: 339px;
+        margin-left: 31px;
+        max-width: 360px;
         height: fit-content;
         li {
           font-size: 14px;
           background-color: #fff;
           cursor: pointer;
-          max-width: 298px;
+          max-width: 318px;
           margin-top: -1px;
           &:hover {
             background-color: $primary-color;

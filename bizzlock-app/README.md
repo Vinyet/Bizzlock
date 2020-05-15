@@ -2,34 +2,50 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # BIZZLOCK
 
-[LOGO]
+![Bizzlock logo](https://imgur.com/GwG1C2l.png)
 
-Bizzlock is a web app project (... 1-3 lines). Breve descripción.
+Bizzlock is a web app project where users can give feedback and read feedback on how companies treat their employees. In order to encourage users to give their feedback, the users's identity remains anonymous.
 
-[Go to Bizzlock]()
+Information regarding companies include: 
 
-### Structure
+1. Objective information: Industry, Location, Description, Image, Website, Job perks.
 
-- Basic explanation of how it goes, both for Employee and JobSeeker
-- Diagramas de componentes
-- Modelo de datos
-- Capturas de pantalla de testing (?)
+2. Subjective information: Salary rating, Work/life balance rating, Overall rating, Comments.
 
-### Technologies used
+[Go to Bizzlock](https://bizzlock-b46dc.firebaseapp.com/)
 
-Languages: JavaScript, React.JS, CSS3, Sass, HTML5
-Server: Firebase
-API: Google Knowledge Graph Search
-Testing: Jest
 
-### Usage
+## Technologies 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+|  Languages  |  Server-side  |  Testing  |         API            |
+| ---|---|--- |---|---|---    |                       
+|    HTML5    |   Firebase    |   Jest    | Google Knowledge Graph |   
+|    CSS3     |               |  Cypres
+|    Sass     |
+| Javascript  |
+|   React.js  |
 
-### Licencia
 
-Builds the app for production to the `build` folder.<br />
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How it works
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* EMPLOYEE: After choosing the option to give feedback, the user is taken to a signup page where Firebase registers them and assigns them an UID. The user enters a company name. There are two scenarios: 
+
+  - If the company is already registered, the user is taken to the UpdateCompany page. 
+  * If the company is not registered, there are two options:
+      + The company is on the Google API, which returns company data
+      + The company is not no the Google API, so the user has to provide the data
+* JOBSEEKER: This user can only read the data posted by other users. They can search for a specific company, use the filters in the sidebar, or sort by different criteria. They can click on a company to read the details on it.
+
+![Basic app diagram](https://imgur.com/RMLXnoU.png)
+
+## Images
+
+![Home](https://imgur.com/21eHLTr.png)
+![CreateCompany](https://imgur.com/CjuNitQ.png)
+![CompanyListing](https://imgur.com/HCu6rM5.png)
+![CompanyDetail](https://imgur.com/TOQrggW.png)
+
+## Future additions
+
+- Additional rating criteria
+- Blockchain with [Blockstack](https://docs.blockstack.org/)

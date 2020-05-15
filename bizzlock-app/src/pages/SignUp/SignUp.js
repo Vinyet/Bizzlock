@@ -107,11 +107,17 @@ const SignUp = () => {
         } 
     }
 
+    function handleAltLink() {
+        console.log('Registered')
+        register();
+        history.push('/create-company', newCompany);
+    }
+
     function showLink() { 
         if ((inputCompany.length < 3 && companies) || newCompanyGoogle) {
             return false;
         } else {
-            return <p onClick={() => history.push('/create-company', newCompany)}>&apos;{newCompany}&apos; has not been registered yet. Create it here!</p>
+            return <p onClick={handleAltLink}>&apos;{newCompany}&apos; has not been registered yet. Create it here!</p>
         }
     }
 

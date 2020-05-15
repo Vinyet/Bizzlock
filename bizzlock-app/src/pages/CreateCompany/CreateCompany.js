@@ -3,8 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getCurrentUser } from '../../services/auth';
 import { postCompany, createUser, getUsers, updateUser } from '../../services/data';
-import { register } from '../../services/auth';
-import { getPerkIndex } from '../../logic/jobperks';
+import { getPerkIndex, allPerks } from '../../logic/jobperks';
 import CommentCreator from '../../components/Comments/CommentCreator';
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating';
@@ -17,6 +16,8 @@ const industries = [
     { title: 'Arts and graphic design' },
     { title: 'Business Administration' },
     { title: 'Construction' },
+    { title: 'Education' },
+    { title: 'Fashion' },
     { title: 'Finances' },
     { title: 'Health' },
     { title: 'Human Resources' },
@@ -116,7 +117,6 @@ const CreateCompany = props => {
         if (typeof(loc.state) === 'string') {
             const getNewCompany = loc.state;
             setNewCompanyName(getNewCompany);
-            register()
         } else if (typeof(loc.state) === 'object') {
             const getGoogleCompany = loc.state;
             setNewCompanyName(getGoogleCompany.name);
@@ -127,13 +127,14 @@ const CreateCompany = props => {
 
     const handleJobPerks = (e) => {
         const perkName = e.target.name;
+        const perkLabel = e.target.value;
         getPerkIndex(perkName);
-        setPerks([...perks, { perkId: perkName }])
+        setPerks([...perks, { perkId: perkName, label: perkLabel }])
     }
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        if (!checked) {
+        if (!googleCompany && !checked) {
             setErrorMessage(true);
             setSuccessMessage(false);
         }
@@ -147,23 +148,22 @@ const CreateCompany = props => {
                 workLife,
                 salary,
                 overallRating,
-                comments: comment
+                usersWhoRated: 1,
+                comments: [comment]
             }
             const user = getCurrentUser();
-            console.log('new current user to create: ', user)    
-            firebaseUserData.filter(firebaseUser => {
-                if (firebaseUser.uid !== user.uid) {
-                    console.log('this user has not been registered')
-                    const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] };
-                    createUser(newUser);
-                    postCompany(form, { usersWhoRated: 1 });
-                } else {
-                    console.log('this user has already been registered')
-                    const existingUser = firebaseUser;
-                    existingUser.ratedCompanies.push(newCompanyName)
-                    postCompany(form, { usersWhoRated: 1 });
-                }
-            })     
+            const userExists = firebaseUserData.filter((firebaseUser) => (firebaseUser.uid === user.uid))
+            if (userExists.length) {
+                const [userData] = userExists; 
+                const sameUserCopy = {...userData};
+                sameUserCopy.ratedCompanies.push(newCompanyName);
+                postCompany(form)
+                updateUser(sameUserCopy);
+            } else {
+                const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] }
+                createUser(newUser); 
+                postCompany(form);
+            } 
             setErrorMessage(false);
             setSuccessMessage(true)
         } else if (googleCompany) {
@@ -177,23 +177,25 @@ const CreateCompany = props => {
                 workLife,
                 salary,
                 overallRating,
+                usersWhoRated: 1,
                 image: googleCompany.image.contentUrl,
-                comments: comment
+                comments: [comment]
             }     
             const user = getCurrentUser();
-            const usersWhoRated = 1;
-            console.log('user for google: ', user)          
-            firebaseUserData.filter((firebaseUser) => {
-                if (firebaseUser.uid === user.uid) {
-                    const sameUser = firebaseUser;
-                    sameUser.ratedCompanies.push(newCompanyName)
-                    postCompany(form, usersWhoRated)
-                } else if (firebaseUser.uid !== user.uid) {
-                    const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] }
-                    createUser(newUser);
-                    postCompany(form, usersWhoRated)
-                }
-            })         
+            const userExists = firebaseUserData.filter((firebaseUser) => (firebaseUser.uid === user.uid))
+            if (userExists.length) {
+                const [userData] = userExists; 
+                const sameUserCopy = {...userData};
+                sameUserCopy.ratedCompanies.push(newCompanyName);
+                postCompany(form)
+                updateUser(sameUserCopy);
+            } else {
+                const newUser = { uid: user.uid, ratedCompanies: [newCompanyName] }
+                createUser(newUser); 
+                postCompany(form);
+            } 
+            setErrorMessage(false);
+            setSuccessMessage(true)
         }
     }
 
@@ -212,20 +214,26 @@ const CreateCompany = props => {
                     <div className="company-information">
                         {(googleCompany) ? 
                             <>
-                            <div className='top-description-photo'>
-                                <img src={image} alt='company'/>
-                                <div className="company-description">{googleCompany.description}</div>
+                            <div className="company-cover">
+                                <div className='top-description-photo'>
+                                    <img src={image} alt='company'/>
+                                    <div className="company-description">{googleCompany.description}</div>
+                                </div>
                             </div>
-                            <div className='top-location-industry'>
-                                <label>What sector does this company especialize in?</label>
-                                <Autocomplete id="free-solo-demo" freeSolo options={industries.map((option) => option.title)} onChange={(event, newValue) => {setIndustry(newValue)}} renderInput={(params) => (
-                                    <TextField {...params} label="Industry" margin="normal" variant="outlined" />
-                                )}/>
-                                <label>Which headquarters do you work at?</label>
-                                <Autocomplete id="free-solo-demo" freeSolo options={cities.map((option) => option.title)} onChange={(event, newValue) => {setCity(newValue)}} renderInput={(params) => (
-                                    <TextField {...params} label="Location" margin="normal" variant="outlined" />
-                                )}/>
-                            </div>     
+                                <div className='top-information'>
+                                    <div className='top-location'>
+                                        <label>What sector does this company especialize in?</label>
+                                        <Autocomplete id="free-solo-demo" freeSolo options={industries.map((option) => option.title)} onChange={(event, newValue) => {setIndustry(newValue)}} renderInput={(params) => (
+                                            <TextField {...params} label="Industry" margin="normal" variant="outlined" />
+                                        )}/>
+                                    </div>
+                                    <div className='top-industry'>
+                                        <label>Which headquarters do you work at?</label>
+                                        <Autocomplete id="free-solo-demo" freeSolo options={cities.map((option) => option.title)} onChange={(event, newValue) => {setCity(newValue)}} renderInput={(params) => (
+                                            <TextField {...params} label="Location" margin="normal" variant="outlined" />
+                                        )}/>
+                                    </div>     
+                                </div>
                             </>   
                         :   
                             <>
@@ -253,25 +261,25 @@ const CreateCompany = props => {
                     <h5>What job perks does this company offer?</h5>
                     <div className="perks-flex" name='perks'>
                         <div>
-                            <input type="checkbox" className="perks-check" name="perk1" onChange={handleJobPerks}></input><p>Restaurant discounts</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk2" onChange={handleJobPerks}></input><p>Gym membership</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk3" onChange={handleJobPerks}></input><p>Nursery</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk4" onChange={handleJobPerks}></input><p>Birthdays off</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk5" onChange={handleJobPerks}></input><p>Flexible schedule</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk1" value='Restaurant discounts' onChange={handleJobPerks}></input><p>Restaurant discounts</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk2" value='Gym membership' onChange={handleJobPerks}></input><p>Gym membership</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk3" value='Nursery' onChange={handleJobPerks}></input><p>Nursery</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk4" value='Birthdays off' onChange={handleJobPerks}></input><p>Birthdays off</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk5" value='Flexible schedule' onChange={handleJobPerks}></input><p>Flexible schedule</p><br/>
                         </div>
                         <div>
-                            <input type="checkbox" className="perks-check" name="perk6" onChange={handleJobPerks}></input> <p>Free coffee</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk7" onChange={handleJobPerks}></input> <p>Free fruit and snacks</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk8" onChange={handleJobPerks}></input> <p>Relaxing employee area</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk9" onChange={handleJobPerks}></input> <p>Good views</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk10" onChange={handleJobPerks}></input> <p>Fully equipped kitchen</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk6" value='Free coffee' onChange={handleJobPerks}></input> <p>Free coffee</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk7" value='Free fruit and snacks' onChange={handleJobPerks}></input> <p>Free fruit and snacks</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk8" value='Relaxing employee area' onChange={handleJobPerks}></input> <p>Relaxing employee area</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk9" value='Good views' onChange={handleJobPerks}></input> <p>Good views</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk10" value='Fully equipped kitchen' onChange={handleJobPerks}></input> <p>Fully equipped kitchen</p><br/>
                         </div>
                         <div>
-                            <input type="checkbox" className="perks-check" name="perk11" onChange={handleJobPerks}></input> <p>Open offices</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk12" onChange={handleJobPerks}></input> <p>Training</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk13" onChange={handleJobPerks}></input> <p>Health insurance</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk14" onChange={handleJobPerks}></input> <p>Free parking</p><br/>
-                            <input type="checkbox" className="perks-check" name="perk15" onChange={handleJobPerks}></input> <p>Employee bonus plan</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk11" value='Open offices' onChange={handleJobPerks}></input> <p>Open offices</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk12" value='Training' onChange={handleJobPerks}></input> <p>Training</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk13" value='Health insurance' onChange={handleJobPerks}></input> <p>Health insurance</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk14" value='Free parking' onChange={handleJobPerks}></input> <p>Free parking</p><br/>
+                            <input type="checkbox" className="perks-check" name="perk15" value='Employee bonus plan' onChange={handleJobPerks}></input> <p>Employee bonus plan</p><br/>
                         </div>
                     </div>
                     <hr data-content='YOUR FEEDBACK'/>
@@ -316,7 +324,7 @@ const CreateCompany = props => {
                         {(errorMessage) ? <Alert variant="outlined" severity="error">Please, accept the Privacy Policy to proceed.</Alert> : null}
                         <input type="submit" id="create-btn" value="SUBMIT"></input>
                         <button onClick={handleCancel}>CANCEL</button>
-                        {(successMessage) ?  <Alert variant="outlined" severity="success">Great! Your registry will be up soon. <a href="/">Back to homepage.</a></Alert>  : null}
+                        {(successMessage) ? <Alert variant="outlined" severity="success">Great! Your registry will be up soon. <a href="/">Back to homepage.</a></Alert>  : null}
                     </div>
                 </form>
             </animated.div>

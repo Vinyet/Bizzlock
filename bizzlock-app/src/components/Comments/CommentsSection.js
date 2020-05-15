@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { getCompanies } from '../../services/data';
+/*import React from 'react';
+//import { getCompanies } from '../../services/data';
 
 
-const CommentsSection = () => {
-    const [ allComments, setAllComments ] = useState([]);
+const CommentsSection = ({ setComments }) => {
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -20,7 +19,7 @@ const CommentsSection = () => {
             {allComments.map((comment) => {
                 return (
                     <div className="comment-container" key={comment.id}>
-                        <textarea value={comment}></textarea>
+                        {comment}
                     </div>
                 )
                 })}
@@ -29,4 +28,4 @@ const CommentsSection = () => {
 }
 
 
-export default CommentsSection;
+export default CommentsSection;*/

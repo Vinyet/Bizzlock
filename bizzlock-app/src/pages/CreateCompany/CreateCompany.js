@@ -120,8 +120,8 @@ const CreateCompany = props => {
         } else if (typeof(loc.state) === 'object') {
             const getGoogleCompany = loc.state;
             setNewCompanyName(getGoogleCompany.name);
-            setImage(getGoogleCompany.image.contentUrl);
             setGoogleCompany(getGoogleCompany);
+            if (getGoogleCompany.image) { setImage(getGoogleCompany.image.contentURL)}
         }
     }
 
@@ -178,9 +178,9 @@ const CreateCompany = props => {
                 salary,
                 overallRating,
                 usersWhoRated: 1,
-                image: googleCompany.image.contentUrl,
                 comments: [comment]
             }     
+            if (googleCompany.image) { form.image = googleCompany.image.contentUrl }
             const user = getCurrentUser();
             const userExists = firebaseUserData.filter((firebaseUser) => (firebaseUser.uid === user.uid))
             if (userExists.length) {
@@ -216,7 +216,7 @@ const CreateCompany = props => {
                             <>
                             <div className="company-cover">
                                 <div className='top-description-photo'>
-                                    <img src={image} alt='company'/>
+                                    {(image) ? <img src={image} alt='company'/> : null}
                                     <div className="company-description">{googleCompany.description}</div>
                                 </div>
                             </div>

@@ -134,50 +134,50 @@ animation-delay: 0.4s;
     padding: 0px 50px 80px 0px;
     .results-box {
         width: 100%;
-    #no-results-box {
-        display: flex;
-        flex-direction: column;
-        flex-flow: row wrap;
-        background: none;
-        border: none;
-        width: 600px;
-        cursor: default;
-        img {
-        width: 60px;
-        margin: 10px auto;
+        #no-results-box {
+            display: flex;
+            flex-direction: column;
+            flex-flow: row wrap;
+            background: none;
+            border: none;
+            width: 600px;
+            cursor: default;
+            margin-left: 200px;
+            img {
+            width: 60px;
+            margin: 10px auto;
+            }
+            p {
+            margin: 30px auto;
+            text-align: center;
+            font-size: 18px;
+            line-height: 40px;
+            }
         }
-        p {
-        margin: 30px auto;
-        text-align: center;
-        font-size: 18px;
-        line-height: 40px;
+        .company-result-single {
+            border: 1px solid lightgray;
+            display: flex; 
+            padding: 20px 45px;
+            height: 150px;
+            width: 970px;
+            .link-to-details {
+                color: $secondary-color;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 22px!important;
+                font-weight: 600;
+                margin-top: 10px;
+                margin-bottom: 0px;
+            }
+            .company-photo img { 
+                margin-top: 10px;
+                max-height: 150px;
+            }
+            .company-info {
+            padding-left: 50px;
+            font-size: 14px;
+            }
         }
-    }
-    .company-result-single {
-        border: 1px solid lightgray;
-        display: flex; 
-        padding: 20px 45px;
-        height: 150px;
-        width: 970px;
-        overflow: auto;
-        .link-to-details {
-            color: $secondary-color;
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 22px!important;
-            font-weight: 600;
-            margin-top: 10px;
-            margin-bottom: 0px;
-        }
-        .company-photo img { 
-            margin-top: 10px;
-            max-height: 150px;
-        }
-        .company-info {
-        padding-left: 50px;
-        font-size: 14px;
-        }
-    }
     }
     #back-arrow {
     color: $secondary-color;

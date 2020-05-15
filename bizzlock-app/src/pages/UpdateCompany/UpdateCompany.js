@@ -55,18 +55,17 @@ const UpdateCompany = props => {
             salary: toUpdate[0].salary + updatedSalary,
             overallRating: toUpdate[0].overallRating + updatedOverallRating,
             usersWhoRated: toUpdate[0].usersWhoRated + 1,
+            newComment: toUpdate[0].comments.push(updatedComment)
         }
         const user = getCurrentUser();
         const userExists = firebaseUserData.filter((firebaseUser) => (firebaseUser.uid === user.uid))
         if (userExists.length) {
-            console.log('this user already exists')
             const [userData] = userExists; 
             const sameUserCopy = {...userData};
             sameUserCopy.ratedCompanies.push(toUpdate[0].name);
             updateCompany(updatedForm)
             updateUser(sameUserCopy);
         } else {
-            console.log('this user does not exist, creating a new one')
             const newUser = { uid: user.uid, ratedCompanies: [toUpdate[0].name] }
             createUser(newUser); 
             updateCompany(updatedForm); 

@@ -16,6 +16,7 @@ const SignUp = () => {
     const [ inputCompany, setInputCompany ] = useState(''); 
     const [ chosenCompany, setChosenCompany ] = useState(); 
     const [ result, setResult ] = useState(false);
+    const [ inputText, setInputText ] = useState();
     const [ newCompanyGoogle, setNewCompanyGoogle ] = useState();
     const [ newCompany, setNewCompany ] = useState('');
     const [ privacyErrorMessage, setPrivacyErrorMessage ] = useState(false);
@@ -32,6 +33,7 @@ const SignUp = () => {
     const handleInput = async (e) => {
         const submittedCompany = e.target.value;
         setInputCompany(submittedCompany);
+        if (inputCompany === "") { setCompanies(undefined); setNewCompanyGoogle(undefined) }
         if (submittedCompany && submittedCompany.length > 2) {
             const resultsFilter = dbCompanies.filter((company) => {
                 const filteredCompanies = company.name.toLowerCase().includes(submittedCompany.toLowerCase()); 
@@ -54,10 +56,10 @@ const SignUp = () => {
                     elem = {
                         name: elem.result.name,
                         type: elem.result['@type'],
-                        description: elem.result.detailedDescription.articleBody,
                         website: elem.result.url,
                         image: elem.result.image
                     };
+                    if (elem.result) { elem.description = elem.result.detailedDescription.articleBody }
                     const companyType = elem.type.filter(x => x === "Organization") 
                     elem.type = companyType[0];
                     return elem;
@@ -73,6 +75,7 @@ const SignUp = () => {
     }
 
     const handleInputSelector = (e) => {
+        setInputText(e.target.getAttribute('name'));
         const pickedCompanyId = e.target.id;
         if (companies && !newCompanyGoogle) {
             const getChosenCompany = companies.filter((company) => {
@@ -114,12 +117,14 @@ const SignUp = () => {
     }
 
     function showLink() { 
-        if ((inputCompany.length < 3 && companies) || newCompanyGoogle) {
+        if (inputCompany.length < 3 || companies.length || newCompanyGoogle) {
             return false;
-        } else {
+        } else if (inputCompany.length > 3 && !companies.length && !newCompanyGoogle) {
             return <p onClick={handleAltLink}>&apos;{newCompany}&apos; has not been registered yet. Create it here!</p>
         }
     }
+
+    console.log('inputtext: ', inputText)
 
     return (
         <div id="signup-container">
@@ -127,11 +132,11 @@ const SignUp = () => {
                 <form action=""> 
                     <h3>What is the company&apos;s name?</h3>
                     <div>
-                        <input type="search" placeholder="Enter a company" value={inputCompany} onChange={handleInput}>{}</input>
+                        <input type="search" placeholder='Enter company name' value={inputCompany} onChange={handleInput}>{}</input>
                             {(result) ? 
                                 <div className="company-results">
                                     {companies.map((company) => 
-                                        <li key={company.id} id={company.id} value={chosenCompany} onClick={handleInputSelector}>{company.name}</li>
+                                        <li key={company.id} id={company.id} name={company.name} value={chosenCompany} onClick={handleInputSelector}>{company.name}</li>
                                     )}
                                     {newCompanyGoogle ? <li name={newCompanyGoogle.name} value={newCompanyGoogle} onClick={handleInputSelector}>{newCompanyGoogle.name}</li> : null}
                                 </div>

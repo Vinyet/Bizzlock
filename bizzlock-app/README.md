@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # BIZZLOCK
 
 ![Bizzlock logo](https://imgur.com/GwG1C2l.png)
@@ -15,15 +13,15 @@ Information regarding companies include:
 [Go to Bizzlock](https://bizzlock-b46dc.firebaseapp.com/)
 
 
-## Technologies 
+## Technologies used
 
-|  Languages  |  Server-side  |  Testing  |         API            |
-| ---|---|--- |---|---|---    |                       
-|    HTML5    |   Firebase    |   Jest    | Google Knowledge Graph |   
-|    CSS3     |               |  Cypres
-|    Sass     |
-| Javascript  |
-|   React.js  |
+| Languages     | Server-side   | Testing | API
+| ------------- |:-------------:| -------:| -----
+| HTML5         | Firebase      |   Jest  | Google Knowledge Graph
+| CSS3          |               | Cypress |
+| Sass          |               |         |
+| JavaScript    |               |         |
+| React.js      |               |         |
 
 
 ## How it works
@@ -48,4 +46,5 @@ Information regarding companies include:
 ## Future additions
 
 - Additional rating criteria
+- Responsive
 - Blockchain with [Blockstack](https://docs.blockstack.org/)
